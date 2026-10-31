@@ -288,7 +288,11 @@ if (earlyAccessForm) {
 // Pressing a card pauses the loop and zooms it; letting go lets momentum settle back into the loop.
 const pricingMarquee = document.querySelector('.pricing-marquee');
 const pricingTrack = pricingMarquee?.querySelector('.pricing-cards');
-if (pricingTrack) {
+const marqueeToggle = document.querySelector('.marquee-toggle');
+if (pricingTrack && reduceMotionPreference.matches) {
+  // Reduced motion: leave the cards still and scrollable by hand, no auto-looping.
+  marqueeToggle?.remove();
+} else if (pricingTrack) {
   const originals = Array.from(pricingTrack.children);
   originals.forEach((card) => {
     const copy = card.cloneNode(true);
@@ -304,6 +308,8 @@ if (pricingTrack) {
   let velocity = 0;     // px per second; positive moves left
   let baseSpeed = 0;
   let holding = false;
+  let paused = false;   // true while hovering/focused or after the Pause button is pressed
+  let userPaused = false;
   let lastTime = 0;
   let pressedCard = null;
   let drag = null;
@@ -319,7 +325,7 @@ if (pricingTrack) {
   const tick = (time) => {
     const dt = Math.min(0.05, (time - (lastTime || time)) / 1000);
     lastTime = time;
-    if (!holding) {
+    if (!holding && !paused) {
       velocity += (baseSpeed - velocity) * Math.min(1, dt * 2.5);
       offset += velocity * dt;
       wrap();
@@ -372,7 +378,7 @@ if (pricingTrack) {
   pricingMarquee.addEventListener('pointerup', finish);
   pricingMarquee.addEventListener('pointercancel', finish);
 
-  // A drag must not count as a click on "Join the waitlist".
+  // A drag must not count as a click on a plan button.
   pricingMarquee.addEventListener('click', (event) => {
     if (pricingMarquee.dataset.dragged === '1') { event.preventDefault(); event.stopPropagation(); }
     pricingMarquee.dataset.dragged = '0';
@@ -380,6 +386,15 @@ if (pricingTrack) {
   pricingMarquee.addEventListener('pointermove', () => { if (drag && drag.moved > 5) pricingMarquee.dataset.dragged = '1'; });
   pricingMarquee.addEventListener('pointerdown', () => { pricingMarquee.dataset.dragged = '0'; });
   pricingMarquee.addEventListener('dragstart', (event) => event.preventDefault());
+
+  const syncPause = () => { paused = userPaused || pricingMarquee.matches(':hover') || pricingMarquee.matches(':focus-within'); };
+  ['mouseenter', 'mouseleave', 'focusin', 'focusout'].forEach((type) => pricingMarquee.addEventListener(type, syncPause));
+  marqueeToggle?.addEventListener('click', () => {
+    userPaused = !userPaused;
+    marqueeToggle.setAttribute('aria-pressed', String(userPaused));
+    marqueeToggle.textContent = userPaused ? 'Resume scrolling' : 'Pause scrolling';
+    syncPause();
+  });
 
   measure();
   window.addEventListener('resize', measure);

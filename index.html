@@ -15,7 +15,7 @@
   <meta property="og:image" content="https://z1p-pro.vercel.app/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Z1P.Pro logo">
+  <meta property="og:image:alt" content="Z1P.Pro: Your Super Intelligence life companion">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://z1p-pro.vercel.app/og-image.png">
   <meta name="twitter:title" content="Z1P.Pro — Your Life Companion">
@@ -24,10 +24,11 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=2">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,400..800&family=Parkinsans:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,400..800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="header-inner">
       <a class="brand" href="#home" aria-label="Z1P home">
@@ -58,14 +59,15 @@
         <a href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#services">Services</a>
+        <a href="#download">Download</a>
         <a href="#pricing">Pricing</a>
         <a href="#contact">Contact</a>
-        <a class="mobile-nav-cta" href="#contact">Join Early Access</a>
+        <a class="mobile-nav-cta" href="#download">Get the App</a>
       </nav>
-      <a class="header-cta" href="#contact">Join Early Access</a>
+      <a class="header-cta" href="#download">Get the App</a>
     </div>
   </header>
-  <main>
+  <main id="main">
     <section class="hero" id="home">
     <div class="hero-inner">
       <section class="hero-copy" aria-labelledby="hero-title">
@@ -77,6 +79,7 @@
         <p class="hero-description">Think things through. Find your next step with Z1P.PRO.</p>
         <a class="outline-button" href="#contact">Join Early Access</a>
         <a class="outline-button download-button" href="downloads/z1p.apk" download="Z1P.apk">Download Android App</a>
+        <p class="download-note">Android only &middot; 98 MB &middot; <a href="#download">How to install</a></p>
       </section>
 
       <section class="conversation" aria-label="Example Z1P conversation">
@@ -327,6 +330,20 @@
       </div>
     </section>
 
+    <section class="download-section" id="download" aria-labelledby="download-heading">
+      <div class="download-card">
+        <h2 class="section-title" id="download-heading">Get the Android app</h2>
+        <p class="section-description">Z1P.Pro is available now for Android phones.</p>
+        <a class="outline-button download-button download-main" href="downloads/z1p.apk" download="Z1P.apk">Download Android App</a>
+        <p class="download-note">98 MB &middot; Android only &middot; Wi-Fi recommended</p>
+        <ol class="install-steps">
+          <li>Tap <strong>Download Android App</strong> and open the file when it finishes.</li>
+          <li>If Android asks, allow installs from your browser (<em>Settings &rarr; Install unknown apps</em>).</li>
+          <li>Tap <strong>Install</strong>, then open Z1P.Pro.</li>
+        </ol>
+      </div>
+    </section>
+
     <section class="pricing-section" id="pricing" aria-labelledby="pricing-title">
       <div class="pricing-container">
         <header class="pricing-header">
@@ -334,6 +351,7 @@
           <p class="pricing-subtitle">All prices are in Philippine pesos (₱). Plans don't renew automatically: when a paid period ends, the account returns to Free.</p>
         </header>
 
+        <button class="marquee-toggle" type="button" aria-pressed="false">Pause scrolling</button>
         <div class="pricing-marquee">
         <div class="pricing-cards">
           <article class="pricing-card" data-plan="free">
@@ -347,7 +365,7 @@
                 <li><span class="check-icon" aria-hidden="true">&#10003;</span>Basic life metrics</li>
               </ul>
             </div>
-            <a class="plan-btn" href="#contact">Join the waitlist</a>
+            <a class="plan-btn" href="#download">Get the app</a>
           </article>
 
           <article class="pricing-card" data-plan="student">
@@ -361,7 +379,7 @@
                 <li><span class="check-icon" aria-hidden="true">&#10003;</span>Full chat history with search</li>
               </ul>
             </div>
-            <a class="plan-btn" href="#contact">Join the waitlist</a>
+            <a class="plan-btn" href="#download">Get the app</a>
           </article>
 
           <article class="pricing-card" data-plan="semester">
@@ -374,7 +392,7 @@
                 <li><span class="check-icon" aria-hidden="true">&#10003;</span>One payment per semester</li>
               </ul>
             </div>
-            <a class="plan-btn" href="#contact">Join the waitlist</a>
+            <a class="plan-btn" href="#download">Get the app</a>
           </article>
 
           <article class="pricing-card" data-plan="premium">
@@ -388,7 +406,7 @@
                 <li><span class="check-icon" aria-hidden="true">&#10003;</span>Full life metrics with insights</li>
               </ul>
             </div>
-            <a class="plan-btn" href="#contact">Join the waitlist</a>
+            <a class="plan-btn" href="#download">Get the app</a>
           </article>
 
           <article class="pricing-card featured-pricing-card" data-plan="pro">
@@ -402,7 +420,7 @@
                 <li><span class="check-icon" aria-hidden="true">&#10003;</span>Unlimited journeys</li>
               </ul>
             </div>
-            <a class="plan-btn" href="#contact">Join the waitlist</a>
+            <a class="plan-btn" href="#download">Get the app</a>
           </article>
         </div>
         </div>
@@ -423,11 +441,11 @@
             <span>EARLY ACCESS</span>
           </div>
           <h2 class="banner-heading" id="contact-heading">Ready to find your own answer?</h2>
-          <p class="banner-description">Join the early access list. We'll reach out when your first conversation is ready.</p>
+          <p class="banner-description">The Android app is ready to download now. Join the early access list to hear about updates and new releases.</p>
         </div>
 
         <div class="banner-form-card">
-          <h3 class="form-title">Join the waitlist</h3>
+          <h3 class="form-title">Get early access updates</h3>
           <p class="form-subtitle">Your details will only be used for early access updates.</p>
 
           <form id="earlyAccessForm" class="access-form" method="post">

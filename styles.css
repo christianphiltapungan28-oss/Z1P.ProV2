@@ -1393,3 +1393,16 @@ img, svg { max-width: 100%; }
 .pricing-marquee .pricing-card { transition: transform .22s cubic-bezier(.25, .8, .25, 1); }
 .pricing-marquee .pricing-card.is-pressed { transform: scale(1.06); }
 
+
+/* Accessibility, download section and pricing pause control */
+.skip-link { position: absolute; left: 12px; top: -60px; z-index: 20; padding: 10px 16px; border-radius: 8px; background: var(--ink); color: #fff; font-weight: 600; }
+.skip-link:focus { top: 12px; }
+.download-note { margin: 12px 0 0; font-size: 13px; color: var(--muted); }
+.download-note a { color: var(--pink-deep); text-decoration: underline; }
+.download-section { padding: 72px 20px; }
+.download-card { max-width: 640px; margin: 0 auto; text-align: center; }
+.download-card .download-button { margin: 22px 0 0; }
+.install-steps { margin: 28px auto 0; padding-left: 22px; max-width: 480px; text-align: left; color: var(--ink); line-height: 1.7; }
+.marquee-toggle { display: block; margin: 0 auto 8px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--ink); font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
+.marquee-toggle:hover { border-color: var(--pink); color: var(--pink-deep); }
+.marquee-toggle:focus-visible { outline: 3px solid rgba(255,21,155,.25); outline-offset: 3px; }
