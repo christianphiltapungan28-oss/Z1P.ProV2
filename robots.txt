@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://z1p-pro.vercel.app/sitemap.xml

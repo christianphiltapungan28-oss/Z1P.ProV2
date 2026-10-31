@@ -1,0 +1,4 @@
+supabase/**
+tests/**
+.env.example
+node_modules
