@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && git add -A && { git diff --cached --quiet || { git commit -q -m \"Auto-update\" && git push -q origin main; }; } 2>&1 | tail -3; exit 0",
+            "timeout": 120,
+            "statusMessage": "Pushing changes to GitHub..."
+          }
+        ]
+      }
+    ]
+  }
+}
