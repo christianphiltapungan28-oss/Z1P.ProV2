@@ -213,6 +213,18 @@ if ('IntersectionObserver' in window && linkedSections.length) {
   linkedSections.forEach((section) => activeObserver.observe(section));
 }
 
+// Zion waves once (and his speech bubble pops in) the first time he scrolls into view.
+const robotMascot = document.querySelector('.robot-mascot');
+if (robotMascot && 'IntersectionObserver' in window) {
+  robotMascot.classList.add('wave-ready');
+  const waveObserver = new IntersectionObserver((entries, observer) => {
+    if (!entries[0].isIntersecting) return;
+    robotMascot.classList.add('is-waving');
+    observer.disconnect();
+  }, { threshold: 0.5 });
+  waveObserver.observe(robotMascot);
+}
+
 // Give in-page CTAs a small press response without blocking normal anchor navigation.
 document.querySelectorAll('.header-cta, .outline-button').forEach((button) => {
   button.addEventListener('pointerdown', () => button.classList.add('is-pressed'));
