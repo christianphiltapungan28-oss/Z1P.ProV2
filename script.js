@@ -296,10 +296,29 @@ if (earlyAccessForm) {
   });
 }
 
-// Pricing: switch between Personal and Student plans.
+// Pricing: switch between Personal and Student plans. The white pill glides to the chosen
+// button, the current cards fade out, then the new ones rise in one after another.
+const pricingToggle = document.querySelector('.pricing-toggle');
 const pricingToggleButtons = [...document.querySelectorAll('.pricing-toggle-btn')];
 const pricingPanel = document.querySelector('#pricing-cards');
-if (pricingToggleButtons.length && pricingPanel) {
+const pricingContainer = document.querySelector('.pricing-container');
+if (pricingToggle && pricingToggleButtons.length && pricingPanel && pricingContainer) {
+  let currentGroup = 'personal';
+  let swapTimer = null;
+
+  const moveThumb = () => {
+    const active = pricingToggleButtons.find((button) => button.classList.contains('is-active'));
+    if (!active) return;
+    pricingToggle.style.setProperty('--thumb-x', active.offsetLeft + 'px');
+    pricingToggle.style.setProperty('--thumb-w', active.offsetWidth + 'px');
+  };
+
+  const applyGroup = (group) => {
+    document.querySelectorAll('[data-groups]').forEach((item) => {
+      item.hidden = !item.dataset.groups.split(' ').includes(group);
+    });
+  };
+
   const showPlans = (group, focus) => {
     pricingToggleButtons.forEach((button) => {
       const active = button.dataset.group === group;
@@ -311,13 +330,35 @@ if (pricingToggleButtons.length && pricingPanel) {
         if (focus) button.focus();
       }
     });
-    document.querySelectorAll('[data-groups]').forEach((item) => {
-      item.hidden = !item.dataset.groups.split(' ').includes(group);
-    });
-    pricingPanel.classList.remove('is-switching');
-    void pricingPanel.offsetWidth;
-    pricingPanel.classList.add('is-switching');
+    moveThumb();
+    if (group === currentGroup) return;
+    currentGroup = group;
+
+    window.clearTimeout(swapTimer);
+    pricingCleanup();
+    if (reduceMotionPreference.matches) {
+      applyGroup(group);
+      return;
+    }
+    pricingContainer.classList.add('is-leaving');
+    pricingPanel.classList.add('is-leaving');
+    swapTimer = window.setTimeout(() => {
+      pricingContainer.classList.remove('is-leaving');
+      pricingPanel.classList.remove('is-leaving');
+      applyGroup(group);
+      pricingContainer.classList.add('is-entering');
+      pricingPanel.classList.add('is-entering');
+      swapTimer = window.setTimeout(pricingCleanup, 800);
+    }, 200);
   };
+
+  function pricingCleanup() {
+    ['is-leaving', 'is-entering'].forEach((name) => {
+      pricingContainer.classList.remove(name);
+      pricingPanel.classList.remove(name);
+    });
+  }
+
   pricingToggleButtons.forEach((button, index) => {
     button.addEventListener('click', () => showPlans(button.dataset.group));
     button.addEventListener('keydown', (event) => {
@@ -328,4 +369,10 @@ if (pricingToggleButtons.length && pricingPanel) {
       showPlans(next.dataset.group, true);
     });
   });
+
+  // Place the pill without animating it the first time, then let later moves glide.
+  moveThumb();
+  pricingToggle.classList.add('has-thumb');
+  window.addEventListener('resize', moveThumb);
+  if (document.fonts) document.fonts.ready.then(moveThumb);
 }
