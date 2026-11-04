@@ -374,86 +374,43 @@ img, svg { max-width: 100%; }
   gap: 4rem;
 }
 
-/* Left Column: Cards */
-.cards-column {
+/* Left Column: Mascot */
+.mascot-column {
   flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  max-width: 460px;
-}
-
-.card {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  padding: 1.75rem 1.5rem;
-  border-radius: 20px;
-  transition: all 0.25s ease-in-out;
-  cursor: pointer;
-}
-
-/* Card 1: Default Style */
-.card-default {
-  background-color: #f6f6f7;
-  border: 1px solid #eef0f2;
-}
-
-.card-default:hover {
-  background-color: #f0f0f2;
-}
-
-/* Card 2: Highlight/Active Style */
-.card-highlight {
-  background-color: #fff0f5;
-  border: 1px solid #fccedc;
-}
-
-.card-highlight:hover,
-.card-highlight.active {
-  box-shadow: 0 4px 20px rgba(230, 0, 92, 0.08);
-}
-
-/* Icon Boxes */
-.icon-box {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
+  max-width: 460px;
 }
 
-.icon-lightning {
-  background-color: #ffffff;
-  color: #555555;
-  border: 1px solid #e0e0e0;
+.z1p-mascot {
+  width: min(100%, 380px);
+  height: auto;
+  overflow: visible;
 }
 
-.icon-sparkle {
-  background-color: #e6005c;
-  color: #ffffff;
+.z1p-mascot .mascot-body {
+  animation: mascot-float 4s ease-in-out infinite;
 }
 
-/* Card Typography */
-.card-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: #111827;
-  line-height: 1.3;
-  margin: 0 0 0.5rem;
+.z1p-mascot .mascot-shadow {
+  transform-origin: 150px 246px;
+  animation: mascot-shadow 4s ease-in-out infinite;
 }
 
-.highlight-title {
-  color: #e6005c;
+@keyframes mascot-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
-.card-description {
-  font-size: 0.925rem;
-  line-height: 1.5;
-  color: #6b7280;
-  margin: 0;
+@keyframes mascot-shadow {
+  0%, 100% { transform: scaleX(1); opacity: 0.9; }
+  50% { transform: scaleX(0.85); opacity: 0.6; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .z1p-mascot .mascot-body,
+  .z1p-mascot .mascot-shadow { animation: none; }
 }
 
 /* Right Column: Information */
@@ -505,7 +462,7 @@ img, svg { max-width: 100%; }
     gap: 3rem;
   }
 
-  .cards-column,
+  .mascot-column,
   .info-column {
     max-width: 100%;
     width: 100%;
