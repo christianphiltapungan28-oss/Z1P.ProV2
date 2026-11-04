@@ -213,16 +213,65 @@ if ('IntersectionObserver' in window && linkedSections.length) {
   linkedSections.forEach((section) => activeObserver.observe(section));
 }
 
-// Zion waves once (and his speech bubble pops in) the first time he scrolls into view.
-const robotMascot = document.querySelector('.robot-mascot');
-if (robotMascot && 'IntersectionObserver' in window) {
-  robotMascot.classList.add('wave-ready');
-  const waveObserver = new IntersectionObserver((entries, observer) => {
+// Mascots: each one waves and shows its speech bubble when it appears. The Zion | Zeta
+// switch under them swaps who is on stage; the newcomer waves right after the swap.
+const mascotStage = document.querySelector('.mascot-stage');
+const mascots = [...document.querySelectorAll('.robot-mascot')];
+const mascotSwitch = document.querySelector('.mascot-switch');
+const mascotButtons = [...document.querySelectorAll('.mascot-switch-btn')];
+if (mascotStage && mascots.length && 'IntersectionObserver' in window) {
+  const findMascot = (name) => mascots.find((item) => item.dataset.mascot === name);
+  const playWave = (mascot) => {
+    mascot.classList.remove('is-waving');
+    void mascot.offsetWidth;
+    mascot.classList.add('is-waving');
+  };
+  let currentMascot = 'zion';
+  let switchTimer = null;
+  mascots.forEach((item) => item.classList.add('wave-ready'));
+
+  const placeMascotThumb = () => {
+    if (!mascotSwitch) return;
+    const active = mascotButtons.find((button) => button.classList.contains('is-active'));
+    if (!active) return;
+    mascotSwitch.style.setProperty('--thumb-x', active.offsetLeft + 'px');
+    mascotSwitch.style.setProperty('--thumb-w', active.offsetWidth + 'px');
+  };
+
+  const chooseMascot = (name) => {
+    if (name === currentMascot) return;
+    const previous = findMascot(currentMascot);
+    const next = findMascot(name);
+    if (!previous || !next) return;
+    currentMascot = name;
+    mascotObserver.disconnect();
+    mascotButtons.forEach((button) => {
+      const active = button.dataset.mascot === name;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+    placeMascotThumb();
+    previous.classList.remove('is-active', 'is-waving');
+    previous.setAttribute('aria-hidden', 'true');
+    next.classList.add('is-active');
+    next.removeAttribute('aria-hidden');
+    window.clearTimeout(switchTimer);
+    switchTimer = window.setTimeout(() => playWave(next), reduceMotionPreference.matches ? 0 : 400);
+  };
+
+  // First time the stage scrolls into view, the mascot on it waves.
+  const mascotObserver = new IntersectionObserver((entries, observer) => {
     if (!entries[0].isIntersecting) return;
-    robotMascot.classList.add('is-waving');
+    playWave(findMascot(currentMascot));
     observer.disconnect();
   }, { threshold: 0.5 });
-  waveObserver.observe(robotMascot);
+  mascotObserver.observe(mascotStage);
+
+  mascotButtons.forEach((button) => button.addEventListener('click', () => chooseMascot(button.dataset.mascot)));
+  placeMascotThumb();
+  if (mascotSwitch) mascotSwitch.classList.add('has-thumb');
+  window.addEventListener('resize', placeMascotThumb);
+  if (document.fonts) document.fonts.ready.then(placeMascotThumb);
 }
 
 // Give in-page CTAs a small press response without blocking normal anchor navigation.

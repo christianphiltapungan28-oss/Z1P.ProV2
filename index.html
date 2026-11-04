@@ -117,26 +117,56 @@
 
     <section class="feature-section" id="about" aria-labelledby="about-heading">
       <div class="container">
-        <div class="robot-mascot">
-          <p class="robot-bubble">Hi, I'm Zion!</p>
-          <!-- Body art with the left arm removed; the arm is its own image so it can wave from the shoulder. -->
-          <img
-            class="robot-arm"
-            src="images/z1p-mascot-arm.png"
-            width="220"
-            height="375"
-            alt=""
-            aria-hidden="true"
-            loading="lazy"
-            decoding="async">
-          <img
-            class="robot-image"
-            src="images/z1p-mascot-body.png"
-            width="1167"
-            height="1348"
-            alt="Zion (Z109), the ZIP.RPO robot mascot"
-            loading="lazy"
-            decoding="async">
+        <div class="mascot-stage">
+          <div class="mascot-views">
+            <div class="robot-mascot is-active" data-mascot="zion">
+              <p class="robot-bubble">Hi, I'm Zion!</p>
+              <!-- Body art with the left arm removed; the arm is its own image so it can wave from the shoulder. -->
+              <img
+                class="robot-arm"
+                src="images/z1p-mascot-arm.png"
+                width="220"
+                height="375"
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                decoding="async">
+              <img
+                class="robot-image"
+                src="images/z1p-mascot-body.png"
+                width="1167"
+                height="1348"
+                alt="Zion (Z109), the ZIP.RPO robot mascot"
+                loading="lazy"
+                decoding="async">
+            </div>
+
+            <div class="robot-mascot" data-mascot="zeta" aria-hidden="true">
+              <p class="robot-bubble">Hi, I'm Zeta!</p>
+              <img
+                class="robot-arm"
+                src="images/zeta-mascot-arm.png"
+                width="111"
+                height="208"
+                alt=""
+                aria-hidden="true"
+                loading="lazy"
+                decoding="async">
+              <img
+                class="robot-image"
+                src="images/zeta-mascot-body.png"
+                width="584"
+                height="674"
+                alt="Zeta, the pink ZIP.RPO robot mascot"
+                loading="lazy"
+                decoding="async">
+            </div>
+          </div>
+
+          <div class="mascot-switch" role="group" aria-label="Choose a mascot">
+            <button class="mascot-switch-btn is-active" type="button" aria-pressed="true" data-mascot="zion">Zion</button>
+            <button class="mascot-switch-btn" type="button" aria-pressed="false" data-mascot="zeta">Zeta</button>
+          </div>
         </div>
 
         <div class="info-column">

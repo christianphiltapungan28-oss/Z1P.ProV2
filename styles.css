@@ -1506,11 +1506,28 @@ img, svg { max-width: 100%; }
 /* Mascot wave: the arm is a separate image tucked behind the body. When the mascot
    scrolls into view, script.js adds .is-waving once: the arm lifts from the shoulder,
    waves, and lowers, while the speech bubble pops in above the head. */
-.robot-mascot {
-  position: relative;
+.mascot-stage {
   width: 100%;
   max-width: 330px;
   margin: 64px auto 0;
+}
+
+/* Both mascots share one grid cell; the inactive one fades out underneath. */
+.mascot-views { display: grid; }
+
+.robot-mascot {
+  position: relative;
+  grid-area: 1 / 1;
+  width: 100%;
+  transition: opacity .35s ease .12s, transform .45s cubic-bezier(.22, 1, .36, 1) .12s, visibility 0s;
+}
+
+.robot-mascot:not(.is-active) {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(14px) scale(.96);
+  transition: opacity .25s ease, transform .3s ease, visibility 0s .3s;
 }
 
 .robot-mascot .robot-image {
@@ -1542,8 +1559,8 @@ img, svg { max-width: 100%; }
 
 .robot-bubble {
   position: absolute;
-  left: 50%;
-  bottom: calc(100% - 3%);
+  left: var(--bubble-left, 50%);
+  bottom: var(--bubble-bottom, calc(100% - 3%));
   z-index: 2;
   margin: 0;
   padding: 14px 22px;
@@ -1563,7 +1580,7 @@ img, svg { max-width: 100%; }
 .robot-bubble::after {
   content: "";
   position: absolute;
-  left: 68%;
+  left: var(--tail-left, 68%);
   top: 100%;
   width: 16px;
   height: 16px;
@@ -1613,3 +1630,87 @@ img, svg { max-width: 100%; }
 }
 
 @keyframes robot-bubble-fade { to { opacity: 0; } }
+
+/* Zeta: her own arm geometry (the arm image is 221x416 at 801,725 in a 1167x1347 canvas)
+   and a bubble placed to the left of her bow. */
+.robot-mascot[data-mascot="zeta"] {
+  --bubble-left: 30%;
+  --bubble-bottom: calc(100% - 7%);
+  --tail-left: 76%;
+}
+
+.robot-mascot[data-mascot="zeta"] .robot-arm {
+  left: 68.64%;
+  top: 53.82%;
+  width: 18.94%;
+  height: 30.88%;
+  transform-origin: 26.7% 10.8%;
+}
+
+/* Zion | Zeta switch under the mascots, with a white pill that glides between the names. */
+.mascot-switch {
+  position: relative;
+  display: flex;
+  width: max-content;
+  max-width: 100%;
+  margin: 28px auto 0;
+  padding: 4px;
+  border-radius: 999px;
+  background: #eeeef1;
+}
+
+.mascot-switch-btn {
+  position: relative;
+  z-index: 1;
+  min-width: 88px;
+  padding: 9px 22px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: .95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color .3s ease, transform .15s ease;
+}
+
+.mascot-switch-btn:hover { color: var(--ink); }
+.mascot-switch-btn:active { transform: scale(.96); }
+
+.mascot-switch-btn.is-active {
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 2px 8px rgba(32, 32, 39, .1);
+}
+
+.mascot-switch.has-thumb::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 0;
+  width: var(--thumb-w, 0);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(32, 32, 39, .1);
+  transform: translateX(var(--thumb-x, 4px));
+  transition: transform .42s cubic-bezier(.65, 0, .25, 1), width .42s cubic-bezier(.65, 0, .25, 1);
+}
+
+.mascot-switch.has-thumb .mascot-switch-btn.is-active {
+  background: transparent;
+  box-shadow: none;
+}
+
+.mascot-switch-btn:focus-visible {
+  outline: 3px solid rgba(255, 21, 155, .3);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .robot-mascot,
+  .robot-mascot:not(.is-active),
+  .mascot-switch.has-thumb::before,
+  .mascot-switch-btn { transition: none; }
+}
