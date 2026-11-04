@@ -844,15 +844,17 @@ img, svg { max-width: 100%; }
 
 .pricing-cards {
   display: flex;
-  width: max-content;
+  flex-wrap: wrap;
   align-items: stretch;
-  gap: 16px;
+  justify-content: center;
+  gap: 24px;
 }
 
 .pricing-card {
   display: flex;
-  width: 270px;
-  flex: 0 0 270px;
+  width: 100%;
+  max-width: 340px;
+  flex: 1 1 280px;
   min-width: 0;
   flex-direction: column;
   justify-content: space-between;
@@ -1033,7 +1035,7 @@ img, svg { max-width: 100%; }
 
 @media (max-width: 560px) {
   .pricing-section { scroll-margin-top: 78px; padding-inline: 18px; }
-  .pricing-card { width: 250px; flex-basis: 250px; padding: 25px 22px 22px; }
+  .pricing-card { padding: 25px 22px 22px; }
 }
 
 .contact-section {
@@ -1374,27 +1376,7 @@ img, svg { max-width: 100%; }
 .footer-links a { color: inherit; text-decoration: none; }
 .footer-links a:hover { text-decoration: underline; }
 
-/* Pricing cards loop to the left; script.js duplicates the set so the loop is seamless. */
-.pricing-marquee {
-  overflow-x: auto;
-  scrollbar-width: none;
-  padding: 14px 0 22px;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
-}
-
-.pricing-marquee::-webkit-scrollbar { display: none; }
-.pricing-marquee.is-looping { cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
-.pricing-marquee.is-dragging { cursor: grabbing; }
-.pricing-marquee.is-looping { overflow: hidden; }
-
-.pricing-marquee.is-looping .pricing-cards { will-change: transform; }
-
-.pricing-marquee .pricing-card { transition: transform .22s cubic-bezier(.25, .8, .25, 1); }
-.pricing-marquee .pricing-card.is-pressed { transform: scale(1.06); }
-
-
-/* Accessibility, download section and pricing pause control */
+/* Accessibility and download section */
 .skip-link { position: absolute; left: 12px; top: -60px; z-index: 20; padding: 10px 16px; border-radius: 8px; background: var(--ink); color: #fff; font-weight: 600; }
 .skip-link:focus { top: 12px; }
 .download-note { margin: 12px 0 0; font-size: 13px; color: var(--muted); }
@@ -1403,9 +1385,6 @@ img, svg { max-width: 100%; }
 .download-card { max-width: 640px; margin: 0 auto; text-align: center; }
 .download-card .download-button { margin: 22px 0 0; }
 .install-steps { margin: 28px auto 0; padding-left: 22px; max-width: 480px; text-align: left; color: var(--ink); line-height: 1.7; }
-.marquee-toggle { display: block; margin: 0 auto 8px; padding: 8px 16px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--ink); font: inherit; font-size: 13px; font-weight: 600; cursor: pointer; }
-.marquee-toggle:hover { border-color: var(--pink); color: var(--pink-deep); }
-.marquee-toggle:focus-visible { outline: 3px solid rgba(255,21,155,.25); outline-offset: 3px; }
 
 /* Header spacing: the nav gained a link and the CTA text got shorter, so give each room */
 @media (min-width: 901px) {
