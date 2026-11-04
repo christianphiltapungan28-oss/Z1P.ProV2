@@ -384,36 +384,19 @@ img, svg { max-width: 100%; }
 }
 
 .z1p-mascot {
-  width: min(100%, 340px);
+  width: min(100%, 420px);
   height: auto;
-  overflow: visible;
-}
-
-.z1p-mascot .mascot-body {
   animation: mascot-float 4s ease-in-out infinite;
-}
-
-.z1p-mascot .mascot-shadow {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: mascot-shadow 4s ease-in-out infinite;
 }
 
 @keyframes mascot-float {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
-}
-
-@keyframes mascot-shadow {
-  0%, 100% { transform: scaleX(1); opacity: 0.9; }
-  50% { transform: scaleX(0.85); opacity: 0.6; }
+  50% { transform: translateY(-10px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .z1p-mascot .mascot-body,
-  .z1p-mascot .mascot-shadow { animation: none; }
+  .z1p-mascot { animation: none; }
 }
-
 
 /* Right Column: Information */
 .info-column {
