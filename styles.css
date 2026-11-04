@@ -1038,6 +1038,59 @@ img, svg { max-width: 100%; }
   .pricing-card { padding: 25px 22px 22px; }
 }
 
+/* Personal | Student switch above the pricing cards */
+.pricing-toggle {
+  display: flex;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto 36px;
+  padding: 4px;
+  border-radius: 999px;
+  background: #eeeef1;
+}
+
+.pricing-toggle-btn {
+  min-width: 96px;
+  padding: 10px 24px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: .95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color .22s ease, color .22s ease, box-shadow .22s ease;
+}
+
+.pricing-toggle-btn:hover { color: var(--ink); }
+
+.pricing-toggle-btn.is-active {
+  background: #fff;
+  color: var(--ink);
+  box-shadow: 0 2px 8px rgba(32, 32, 39, .1);
+}
+
+.pricing-toggle-btn:focus-visible {
+  outline: 3px solid rgba(255, 21, 155, .3);
+  outline-offset: 2px;
+}
+
+.pricing-card[hidden],
+.pricing-footnote[hidden] { display: none; }
+
+.pricing-cards.is-switching .pricing-card { animation: pricing-card-in .35s cubic-bezier(.22, 1, .36, 1) both; }
+
+@keyframes pricing-card-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pricing-cards.is-switching .pricing-card { animation: none; }
+  .pricing-toggle-btn { transition: none; }
+}
+
 .contact-section {
   width: 100%;
   max-width: 1140px;

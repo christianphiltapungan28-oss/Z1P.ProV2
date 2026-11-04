@@ -295,3 +295,37 @@ if (earlyAccessForm) {
     }
   });
 }
+
+// Pricing: switch between Personal and Student plans.
+const pricingToggleButtons = [...document.querySelectorAll('.pricing-toggle-btn')];
+const pricingPanel = document.querySelector('#pricing-cards');
+if (pricingToggleButtons.length && pricingPanel) {
+  const showPlans = (group, focus) => {
+    pricingToggleButtons.forEach((button) => {
+      const active = button.dataset.group === group;
+      button.classList.toggle('is-active', active);
+      button.setAttribute('aria-selected', String(active));
+      button.tabIndex = active ? 0 : -1;
+      if (active) {
+        pricingPanel.setAttribute('aria-labelledby', button.id);
+        if (focus) button.focus();
+      }
+    });
+    document.querySelectorAll('[data-groups]').forEach((item) => {
+      item.hidden = !item.dataset.groups.split(' ').includes(group);
+    });
+    pricingPanel.classList.remove('is-switching');
+    void pricingPanel.offsetWidth;
+    pricingPanel.classList.add('is-switching');
+  };
+  pricingToggleButtons.forEach((button, index) => {
+    button.addEventListener('click', () => showPlans(button.dataset.group));
+    button.addEventListener('keydown', (event) => {
+      const step = event.key === 'ArrowRight' ? 1 : event.key === 'ArrowLeft' ? -1 : 0;
+      if (!step) return;
+      event.preventDefault();
+      const next = pricingToggleButtons[(index + step + pricingToggleButtons.length) % pricingToggleButtons.length];
+      showPlans(next.dataset.group, true);
+    });
+  });
+}

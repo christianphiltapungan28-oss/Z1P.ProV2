@@ -346,8 +346,13 @@
           <p class="pricing-subtitle">All prices are in Philippine pesos (₱). Plans don't renew automatically: when a paid period ends, the account returns to Free.</p>
         </header>
 
-        <div class="pricing-cards">
-          <article class="pricing-card" data-plan="free">
+        <div class="pricing-toggle" role="tablist" aria-label="Plan type">
+          <button class="pricing-toggle-btn is-active" type="button" role="tab" id="plans-tab-personal" aria-selected="true" aria-controls="pricing-cards" data-group="personal">Personal</button>
+          <button class="pricing-toggle-btn" type="button" role="tab" id="plans-tab-student" aria-selected="false" aria-controls="pricing-cards" data-group="student" tabindex="-1">Student</button>
+        </div>
+
+        <div class="pricing-cards" id="pricing-cards" role="tabpanel" aria-labelledby="plans-tab-personal">
+          <article class="pricing-card" data-plan="free" data-groups="personal student">
             <div class="pricing-card-content">
               <h3 class="plan-name">Free</h3>
               <p class="plan-price">₱0<span> forever</span></p>
@@ -361,7 +366,34 @@
             <a class="plan-btn" href="#download">Get the app</a>
           </article>
 
-          <article class="pricing-card" data-plan="premium">
+          <article class="pricing-card" data-plan="student" data-groups="student" hidden>
+            <div class="pricing-card-content">
+              <h3 class="plan-name">Student</h3>
+              <p class="plan-price">₱59<span>/mo</span></p>
+              <p class="plan-note">School emails ending in .edu.ph</p>
+              <ul class="features-list">
+                <li><span class="check-icon" aria-hidden="true">&#10003;</span>50 AI chats a day</li>
+                <li><span class="check-icon" aria-hidden="true">&#10003;</span>3 active journeys</li>
+                <li><span class="check-icon" aria-hidden="true">&#10003;</span>Full chat history with search</li>
+              </ul>
+            </div>
+            <a class="plan-btn" href="#download">Get the app</a>
+          </article>
+
+          <article class="pricing-card featured-pricing-card" data-plan="semester" data-groups="student" hidden>
+            <div class="pricing-card-content">
+              <h3 class="plan-name">Student Semester</h3>
+              <p class="plan-price">₱249<span>/semester</span></p>
+              <p class="plan-note">Paid per 5-month semester (save ₱46)</p>
+              <ul class="features-list">
+                <li><span class="check-icon" aria-hidden="true">&#10003;</span>Everything in Student</li>
+                <li><span class="check-icon" aria-hidden="true">&#10003;</span>One payment per semester</li>
+              </ul>
+            </div>
+            <a class="plan-btn" href="#download">Get the app</a>
+          </article>
+
+          <article class="pricing-card" data-plan="premium" data-groups="personal">
             <div class="pricing-card-content">
               <h3 class="plan-name">Premium</h3>
               <p class="plan-price">₱99<span>/mo</span></p>
@@ -375,7 +407,7 @@
             <a class="plan-btn" href="#download">Get the app</a>
           </article>
 
-          <article class="pricing-card featured-pricing-card" data-plan="pro">
+          <article class="pricing-card featured-pricing-card" data-plan="pro" data-groups="personal">
             <div class="pricing-card-content">
               <h3 class="plan-name">Pro</h3>
               <p class="plan-price">₱199<span>/mo</span></p>
@@ -390,7 +422,8 @@
           </article>
         </div>
 
-        <p class="pricing-footnote">On Pro, chats switch from Terra to Luna after the first 10 each day.</p>
+        <p class="pricing-footnote" data-groups="personal">On Pro, chats switch from Terra to Luna after the first 10 each day.</p>
+        <p class="pricing-footnote" data-groups="student" hidden>Student plans require a school email ending in .edu.ph.</p>
       </div>
     </section>
     <section class="contact-section" id="contact" aria-labelledby="contact-heading">
