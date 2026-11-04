@@ -1413,3 +1413,13 @@ img, svg { max-width: 100%; }
   .primary-nav { gap: clamp(22px, 3.2vw, 56px); }
   .header-cta { min-width: 0; padding: 0 28px; }
 }
+
+.robot-image {
+  display: block;
+  width: 100%;
+  max-width: 350px;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+  background: transparent;
+}
