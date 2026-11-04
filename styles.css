@@ -1668,9 +1668,9 @@ img, svg { max-width: 100%; }
 }
 
 .robot-mascot[data-mascot="zeta"] {
-  --shadow-left: 33.22%;
-  --shadow-top: 91.69%;
-  --shadow-width: 36.47%;
+  --shadow-left: 33.68%;
+  --shadow-top: 92.13%;
+  --shadow-width: 35.73%;
 }
 
 @keyframes robot-float {
