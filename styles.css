@@ -1648,6 +1648,46 @@ img, svg { max-width: 100%; }
   transform-origin: 33.21% 15.89%;
 }
 
+/* Slow float: the figure drifts up and down while its floor shadow stays put and breathes
+   with the height. Uses the standalone "translate" property so it never fights the wave. */
+.robot-figure {
+  position: relative;
+  z-index: 1;
+  animation: robot-float 6s ease-in-out infinite;
+}
+
+.robot-shadow {
+  position: absolute;
+  left: var(--shadow-left, 31.19%);
+  top: var(--shadow-top, 90.73%);
+  width: var(--shadow-width, 37.7%);
+  height: auto;
+  z-index: 0;
+  transform-origin: 50% 50%;
+  animation: robot-shadow-breathe 6s ease-in-out infinite;
+}
+
+.robot-mascot[data-mascot="zeta"] {
+  --shadow-left: 33.22%;
+  --shadow-top: 91.69%;
+  --shadow-width: 36.47%;
+}
+
+@keyframes robot-float {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -14px; }
+}
+
+@keyframes robot-shadow-breathe {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(.86); opacity: .6; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .robot-figure,
+  .robot-shadow { animation: none; }
+}
+
 /* Zion | Zeta switch under the mascots, with a white pill that glides between the names. */
 .mascot-switch {
   position: relative;
