@@ -213,48 +213,6 @@ if ('IntersectionObserver' in window && linkedSections.length) {
   linkedSections.forEach((section) => activeObserver.observe(section));
 }
 
-// Mascot waves when the page scrolls past it: each new scroll burst, or a change of
-// direction, restarts the wave, tilting toward the way the page is moving.
-const robotMascot = document.querySelector('.robot-image');
-if (robotMascot && !reduceMotionPreference.matches) {
-  let mascotVisible = false;
-  let lastScrollY = window.scrollY;
-  let lastWaveDirection = null;
-  let scrollIdleTimer = null;
-
-  const wave = (direction) => {
-    robotMascot.classList.remove('is-waving-down', 'is-waving-up');
-    void robotMascot.offsetWidth;
-    robotMascot.classList.add(direction === 'down' ? 'is-waving-down' : 'is-waving-up');
-    lastWaveDirection = direction;
-  };
-
-  robotMascot.addEventListener('animationend', () => {
-    robotMascot.classList.remove('is-waving-down', 'is-waving-up');
-  });
-
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver((entries) => {
-      mascotVisible = entries[0].isIntersecting;
-    }, { threshold: 0.2 }).observe(robotMascot);
-  } else {
-    mascotVisible = true;
-  }
-
-  window.addEventListener('scroll', () => {
-    const currentY = window.scrollY;
-    const delta = currentY - lastScrollY;
-    lastScrollY = currentY;
-    if (!mascotVisible || Math.abs(delta) < 2) return;
-
-    const direction = delta > 0 ? 'down' : 'up';
-    // A pause in scrolling resets the burst, so the next scroll waves again.
-    if (scrollIdleTimer === null || direction !== lastWaveDirection) wave(direction);
-    window.clearTimeout(scrollIdleTimer);
-    scrollIdleTimer = window.setTimeout(() => { scrollIdleTimer = null; }, 300);
-  }, { passive: true });
-}
-
 // Give in-page CTAs a small press response without blocking normal anchor navigation.
 document.querySelectorAll('.header-cta, .outline-button').forEach((button) => {
   button.addEventListener('pointerdown', () => button.classList.add('is-pressed'));
