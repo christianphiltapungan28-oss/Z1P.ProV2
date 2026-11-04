@@ -117,47 +117,31 @@
 
     <section class="feature-section" id="about" aria-labelledby="about-heading">
       <div class="container">
-        <div class="mascot-column">
-          <svg class="z1p-mascot" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 270" role="img" aria-label="Z1P mascot, a friendly white robot with glowing cyan eyes">
-            <defs>
-              <linearGradient id="mascot-shell" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#ffffff"/>
-                <stop offset="1" stop-color="#d9dbe8"/>
-              </linearGradient>
-              <linearGradient id="mascot-visor" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#2b3550"/>
-                <stop offset="1" stop-color="#0f1426"/>
-              </linearGradient>
-              <radialGradient id="mascot-core" cx="0.5" cy="0.5" r="0.5">
-                <stop offset="0" stop-color="#ff1da5"/>
-                <stop offset="1" stop-color="#ff1da5" stop-opacity="0"/>
-              </radialGradient>
-              <filter id="mascot-glow" x="-50%" y="-50%" width="200%" height="200%">
-                <feGaussianBlur stdDeviation="2.5" result="b"/>
-                <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-              </filter>
-            </defs>
-            <ellipse class="mascot-shadow" cx="150" cy="246" rx="40" ry="6" fill="#14142e"/>
-            <g class="mascot-body">
-              <rect x="84" y="150" width="30" height="66" rx="15" fill="url(#mascot-shell)"/>
-              <rect x="190" y="150" width="30" height="66" rx="15" fill="url(#mascot-shell)"/>
-              <rect x="106" y="143" width="92" height="94" rx="42" fill="url(#mascot-shell)"/>
-              <path d="M110 205 H140 L148 213 H162 L170 205 H194" fill="none" stroke="#c4c7d8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="152" cy="178" r="14" fill="url(#mascot-core)"/>
-              <circle cx="152" cy="178" r="5.5" fill="#ff1da5"/>
-              <rect x="118" y="160" width="4" height="30" rx="2" fill="#ffffff" opacity="0.8"/>
-              <rect x="130" y="30" width="44" height="22" rx="9" fill="#c9ccdc"/>
-              <rect x="68" y="84" width="20" height="40" rx="10" fill="#c4c7d8"/>
-              <rect x="216" y="84" width="20" height="40" rx="10" fill="#c4c7d8"/>
-              <rect x="76" y="42" width="152" height="110" rx="52" fill="url(#mascot-shell)"/>
-              <rect x="90" y="58" width="124" height="80" rx="36" fill="url(#mascot-visor)"/>
-              <g fill="none" stroke="#35e3ff" stroke-width="6" stroke-linecap="round" filter="url(#mascot-glow)">
-                <path d="M118 102 Q128 88 138 102"/>
-                <path d="M168 102 Q178 88 188 102"/>
-              </g>
-              <path d="M144 110 Q153 122 162 110 Z" fill="#35e3ff" filter="url(#mascot-glow)"/>
-            </g>
-          </svg>
+        <div class="cards-column">
+          <div class="card card-default" data-card="answer-machine">
+            <div class="icon-box icon-lightning" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title">An answer machine</h3>
+              <p class="card-description">Gives you a quick answer, and you're back where you started tomorrow.</p>
+            </div>
+          </div>
+
+          <div class="card card-highlight active" data-card="zip-rpo">
+            <div class="icon-box icon-sparkle" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"></path>
+                <circle cx="5" cy="5" r="1"></circle>
+              </svg>
+            </div>
+            <div class="card-content">
+              <h3 class="card-title highlight-title">ZIP.RPO</h3>
+              <p class="card-description">Guides you with questions, keeps track of what you learn, and turns it into steps you can take.</p>
+            </div>
+          </div>
         </div>
 
         <div class="info-column">
