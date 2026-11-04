@@ -1417,9 +1417,36 @@ img, svg { max-width: 100%; }
 .robot-image {
   display: block;
   width: 100%;
-  max-width: 350px;
+  max-width: 330px;
   height: auto;
   object-fit: contain;
   margin: 0 auto;
   background: transparent;
+  transform-origin: 50% 90%;
+}
+
+.robot-image.is-waving-down { animation: robot-wave-down 1.1s ease-in-out; }
+.robot-image.is-waving-up { animation: robot-wave-up 1.1s ease-in-out; }
+
+@keyframes robot-wave-down {
+  0%   { transform: rotate(0deg) translateY(0); }
+  15%  { transform: rotate(9deg) translateY(-6px); }
+  35%  { transform: rotate(-7deg) translateY(-8px); }
+  55%  { transform: rotate(6deg) translateY(-6px); }
+  75%  { transform: rotate(-3deg) translateY(-3px); }
+  100% { transform: rotate(0deg) translateY(0); }
+}
+
+@keyframes robot-wave-up {
+  0%   { transform: rotate(0deg) translateY(0); }
+  15%  { transform: rotate(-9deg) translateY(-6px); }
+  35%  { transform: rotate(7deg) translateY(-8px); }
+  55%  { transform: rotate(-6deg) translateY(-6px); }
+  75%  { transform: rotate(3deg) translateY(-3px); }
+  100% { transform: rotate(0deg) translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .robot-image.is-waving-down,
+  .robot-image.is-waving-up { animation: none; }
 }
