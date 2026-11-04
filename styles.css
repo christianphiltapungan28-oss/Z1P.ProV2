@@ -1631,7 +1631,7 @@ img, svg { max-width: 100%; }
 
 @keyframes robot-bubble-fade { to { opacity: 0; } }
 
-/* Zeta: her own arm geometry (the rebuilt arm image is 245x416 at 777,725 in a 1167x1347 canvas;
+/* Zeta: her own arm geometry (the rebuilt arm + hand image is 262x428 at 777,725 in a 1167x1347 canvas;
    it pivots on the centre of the arm's rounded top)
    and a bubble placed to the left of her bow. */
 .robot-mascot[data-mascot="zeta"] {
@@ -1643,9 +1643,9 @@ img, svg { max-width: 100%; }
 .robot-mascot[data-mascot="zeta"] .robot-arm {
   left: 66.58%;
   top: 53.82%;
-  width: 20.99%;
-  height: 30.88%;
-  transform-origin: 35.5% 16.3%;
+  width: 22.45%;
+  height: 31.77%;
+  transform-origin: 33.21% 15.89%;
 }
 
 /* Zion | Zeta switch under the mascots, with a white pill that glides between the names. */
