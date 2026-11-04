@@ -117,14 +117,26 @@
 
     <section class="feature-section" id="about" aria-labelledby="about-heading">
       <div class="container">
-        <img
-          class="robot-image"
-          src="images/z1p-mascot.png"
-          width="1167"
-          height="1348"
-          alt="ZIP.RPO robot mascot"
-          loading="lazy"
-          decoding="async">
+        <div class="robot-mascot">
+          <!-- Same image clipped to the robot's right arm; it rotates from the shoulder to wave. -->
+          <img
+            class="robot-arm"
+            src="images/z1p-mascot.png"
+            width="1167"
+            height="1348"
+            alt=""
+            aria-hidden="true"
+            loading="lazy"
+            decoding="async">
+          <img
+            class="robot-image"
+            src="images/z1p-mascot.png"
+            width="1167"
+            height="1348"
+            alt="ZIP.RPO robot mascot waving"
+            loading="lazy"
+            decoding="async">
+        </div>
 
         <div class="info-column">
           <div class="section-tag">

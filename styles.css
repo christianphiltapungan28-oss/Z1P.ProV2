@@ -1423,3 +1423,46 @@ img, svg { max-width: 100%; }
   margin: 0 auto;
   background: transparent;
 }
+/* Mascot wave: the body image has its right arm masked out, and a second copy of the
+   image clipped to just that arm sits behind it and rotates from the shoulder. */
+.robot-mascot {
+  position: relative;
+  width: 100%;
+  max-width: 330px;
+  margin: 0 auto;
+}
+
+.robot-mascot .robot-image {
+  position: relative;
+  z-index: 1;
+  max-width: none;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1167 1348' preserveAspectRatio='none'%3E%3Cpath fill-rule='evenodd' d='M0 0H1167V1348H0Z M285 714 L340 716 L358 725 L363 733 L357 744 L347.5 765 L339 795 L335 825 L334.5 855 L336.5 885 L340 915 L341 930 L334 960 L330 990 L330 1020 L330 1050 L320 1080 L300 1100 L230 1100 L200 1092 L172 1050 L166 1020 L171 990 L178 960 L186 930 L195 900 L205 870 L215 840 L225 810 L236 780 L252 750 L268 735Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1167 1348' preserveAspectRatio='none'%3E%3Cpath fill-rule='evenodd' d='M0 0H1167V1348H0Z M285 714 L340 716 L358 725 L363 733 L357 744 L347.5 765 L339 795 L335 825 L334.5 855 L336.5 885 L340 915 L341 930 L334 960 L330 990 L330 1020 L330 1050 L320 1080 L300 1100 L230 1100 L200 1092 L172 1050 L166 1020 L171 990 L178 960 L186 930 L195 900 L205 870 L215 840 L225 810 L236 780 L252 750 L268 735Z'/%3E%3C/svg%3E") 0 0 / 100% 100% no-repeat;
+}
+
+.robot-arm {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(24.42% 52.97%, 29.13% 53.12%, 30.68% 53.78%, 31.11% 54.38%, 30.59% 55.19%, 29.78% 56.75%, 29.05% 58.98%, 28.71% 61.20%, 28.66% 63.43%, 28.83% 65.65%, 29.13% 67.88%, 29.22% 68.99%, 28.62% 71.22%, 28.28% 73.44%, 28.28% 75.67%, 28.28% 77.89%, 27.42% 80.12%, 25.71% 81.60%, 19.71% 81.60%, 17.14% 81.01%, 14.74% 77.89%, 14.22% 75.67%, 14.65% 73.44%, 15.25% 71.22%, 15.94% 68.99%, 16.71% 66.77%, 17.57% 64.54%, 18.42% 62.31%, 19.28% 60.09%, 20.22% 57.86%, 21.59% 55.64%, 22.96% 54.53%);
+  transform-origin: 27.25% 55.27%;
+  animation: robot-arm-wave 4s ease-in-out infinite;
+}
+
+@keyframes robot-arm-wave {
+  0%, 80%, 100% { transform: rotate(0deg); }
+  15%           { transform: rotate(125deg); }
+  25%, 45%      { transform: rotate(105deg); }
+  35%, 55%      { transform: rotate(128deg); }
+  65%           { transform: rotate(120deg); }
+}
+
+/* No motion: hold the arm up in a still wave instead. */
+@media (prefers-reduced-motion: reduce) {
+  .robot-arm {
+    animation: none;
+    transform: rotate(120deg);
+  }
+}
