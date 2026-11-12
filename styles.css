@@ -1146,7 +1146,9 @@ img, svg { max-width: 100%; }
   padding: 4rem 1.5rem 5rem;
   scroll-margin-top: 100px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4.5rem;
 }
 
 .cta-banner {
@@ -1758,8 +1760,8 @@ img, svg { max-width: 100%; }
 
 /* Reviews: testimonials list + rating form */
 .visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
-.reviews-section { padding: 88px 0; background: var(--pink-soft); scroll-margin-top: 80px; }
-.reviews-container { width: min(1040px, 100% - 36px); margin: 0 auto; }
+.reviews-block { width: 100%; }
+.reviews-container { width: 100%; margin: 0 auto; }
 .reviews-head { max-width: 640px; margin: 0 auto 40px; text-align: center; }
 .reviews-title { margin: 0; font-family: var(--display-font); font-size: clamp(1.9rem, 4vw, 2.7rem); line-height: 1.1; letter-spacing: -.04em; }
 .reviews-sub { margin: 14px 0 0; color: var(--muted); font-size: 1.05rem; line-height: 1.6; }
@@ -1793,7 +1795,6 @@ img, svg { max-width: 100%; }
 .review-submit { margin-top: 0; }
 .review-note { margin: 0; color: var(--muted); font-size: .8rem; line-height: 1.5; text-align: center; }
 @media (max-width: 560px) {
-  .reviews-section { padding: 64px 0; }
   .review-form { padding: 22px 18px; }
   .star-input label { width: 44px; height: 44px; }
 }
