@@ -464,6 +464,53 @@
       </div>
     </section>
     <section class="contact-section" id="contact" aria-labelledby="contact-heading">
+    <div class="reviews-block">
+      <div class="reviews-container">
+        <div class="reviews-head">
+          <h2 class="reviews-title" id="reviews-heading">What people say about Z1P.Pro</h2>
+          <p class="reviews-sub">Tried Z1P.Pro? Rate your experience. Reviews appear here once they have been approved.</p>
+        </div>
+
+        <ul class="testimonial-list" id="testimonialList" hidden></ul>
+        <p class="testimonial-empty" id="testimonialEmpty" hidden>No reviews yet. Be the first to share yours.</p>
+
+        <form class="review-form" id="reviewForm" method="post" novalidate>
+          <h3 class="review-form-title">Rate your experience</h3>
+          <fieldset class="rating-field">
+            <legend>Your rating</legend>
+            <div class="star-input">
+              <input type="radio" id="star5" name="rating" value="5" required>
+              <label for="star5" title="5 stars"><span class="visually-hidden">5 stars</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.94 6.1 6.56.9-4.8 4.6 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6-4.8-4.6 6.56-.9L12 2.5z"/></svg></label>
+              <input type="radio" id="star4" name="rating" value="4" required>
+              <label for="star4" title="4 stars"><span class="visually-hidden">4 stars</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.94 6.1 6.56.9-4.8 4.6 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6-4.8-4.6 6.56-.9L12 2.5z"/></svg></label>
+              <input type="radio" id="star3" name="rating" value="3" required>
+              <label for="star3" title="3 stars"><span class="visually-hidden">3 stars</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.94 6.1 6.56.9-4.8 4.6 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6-4.8-4.6 6.56-.9L12 2.5z"/></svg></label>
+              <input type="radio" id="star2" name="rating" value="2" required>
+              <label for="star2" title="2 stars"><span class="visually-hidden">2 stars</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.94 6.1 6.56.9-4.8 4.6 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6-4.8-4.6 6.56-.9L12 2.5z"/></svg></label>
+              <input type="radio" id="star1" name="rating" value="1" required>
+              <label for="star1" title="1 star"><span class="visually-hidden">1 star</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.94 6.1 6.56.9-4.8 4.6 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6-4.8-4.6 6.56-.9L12 2.5z"/></svg></label>
+            </div>
+          </fieldset>
+          <div class="form-group">
+            <label for="reviewName">Your name</label>
+            <input type="text" id="reviewName" name="name" placeholder="First name is fine" autocomplete="given-name" maxlength="60" required>
+          </div>
+          <div class="form-group">
+            <label for="reviewComment">Your review <span class="optional">(optional)</span></label>
+            <textarea id="reviewComment" name="comment" rows="4" maxlength="500" placeholder="What did you like? What could be better?"></textarea>
+            <span class="char-count" id="reviewCount" aria-hidden="true">0 / 500</span>
+          </div>
+          <div class="hp-field" aria-hidden="true">
+            <label for="reviewWebsite">Leave this field empty</label>
+            <input type="text" id="reviewWebsite" name="website" tabindex="-1" autocomplete="off">
+          </div>
+          <button type="submit" class="submit-btn review-submit">Submit review</button>
+          <p class="form-status" id="reviewStatus" role="status" aria-live="polite"></p>
+          <p class="review-note">Only your name, rating and comment are saved. We never ask for your email, and nothing is shown until it is approved.</p>
+        </form>
+      </div>
+    </div>
+
       <div class="cta-banner">
         <div class="bg-circle circle-top-right" aria-hidden="true"></div>
         <div class="bg-circle circle-bottom-left" aria-hidden="true"></div>
@@ -503,53 +550,6 @@
             </div>
           </form>
         </div>
-
-      <div class="reviews-block">
-        <div class="reviews-container">
-          <div class="reviews-head">
-            <h2 class="reviews-title" id="reviews-heading">What people say about Z1P.Pro</h2>
-            <p class="reviews-sub">Tried Z1P.Pro? Rate your experience. Reviews appear here once they have been approved.</p>
-          </div>
-
-          <ul class="testimonial-list" id="testimonialList" hidden></ul>
-          <p class="testimonial-empty" id="testimonialEmpty" hidden>No reviews yet. Be the first to share yours.</p>
-
-          <form class="review-form" id="reviewForm" method="post" novalidate>
-            <h3 class="review-form-title">Rate your experience</h3>
-            <fieldset class="rating-field">
-              <legend>Your rating</legend>
-              <div class="star-input">
-                <input type="radio" id="star5" name="rating" value="5" required>
-                <label for="star5" title="5 stars"><span class="visually-hidden">5 stars</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.94 6.1 6.56.9-4.8 4.6 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6-4.8-4.6 6.56-.9L12 2.5z"/></svg></label>
-                <input type="radio" id="star4" name="rating" value="4" required>
-                <label for="star4" title="4 stars"><span class="visually-hidden">4 stars</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.94 6.1 6.56.9-4.8 4.6 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6-4.8-4.6 6.56-.9L12 2.5z"/></svg></label>
-                <input type="radio" id="star3" name="rating" value="3" required>
-                <label for="star3" title="3 stars"><span class="visually-hidden">3 stars</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.94 6.1 6.56.9-4.8 4.6 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6-4.8-4.6 6.56-.9L12 2.5z"/></svg></label>
-                <input type="radio" id="star2" name="rating" value="2" required>
-                <label for="star2" title="2 stars"><span class="visually-hidden">2 stars</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.94 6.1 6.56.9-4.8 4.6 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6-4.8-4.6 6.56-.9L12 2.5z"/></svg></label>
-                <input type="radio" id="star1" name="rating" value="1" required>
-                <label for="star1" title="1 star"><span class="visually-hidden">1 star</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.94 6.1 6.56.9-4.8 4.6 1.2 6.6L12 17.5l-5.9 3.2 1.2-6.6-4.8-4.6 6.56-.9L12 2.5z"/></svg></label>
-              </div>
-            </fieldset>
-            <div class="form-group">
-              <label for="reviewName">Your name</label>
-              <input type="text" id="reviewName" name="name" placeholder="First name is fine" autocomplete="given-name" maxlength="60" required>
-            </div>
-            <div class="form-group">
-              <label for="reviewComment">Your review <span class="optional">(optional)</span></label>
-              <textarea id="reviewComment" name="comment" rows="4" maxlength="500" placeholder="What did you like? What could be better?"></textarea>
-              <span class="char-count" id="reviewCount" aria-hidden="true">0 / 500</span>
-            </div>
-            <div class="hp-field" aria-hidden="true">
-              <label for="reviewWebsite">Leave this field empty</label>
-              <input type="text" id="reviewWebsite" name="website" tabindex="-1" autocomplete="off">
-            </div>
-            <button type="submit" class="submit-btn review-submit">Submit review</button>
-            <p class="form-status" id="reviewStatus" role="status" aria-live="polite"></p>
-            <p class="review-note">Only your name, rating and comment are saved. We never ask for your email, and nothing is shown until it is approved.</p>
-          </form>
-        </div>
-      </div>
       </div>
     </section>
   </main>

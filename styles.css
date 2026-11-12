@@ -1799,11 +1799,3 @@ img, svg { max-width: 100%; }
   .star-input label { width: 44px; height: 44px; }
 }
 @media (prefers-reduced-motion: reduce) { .star-input label { transition: none; } .star-input label:hover { transform: none; } }
-
-/* Reviews live inside the pink early-access box */
-.cta-banner { flex-wrap: wrap; }
-.cta-banner .reviews-block { position: relative; z-index: 1; flex: 0 0 100%; margin-top: 1rem; padding-top: 3rem; border-top: 1px solid rgba(255, 255, 255, .35); }
-.cta-banner .reviews-title { color: #fff; }
-.cta-banner .reviews-sub, .cta-banner .testimonial-empty { color: rgba(255, 255, 255, .85); }
-.cta-banner .testimonial-card, .cta-banner .review-form { border-color: transparent; box-shadow: 0 14px 34px rgba(0, 0, 0, .12); }
-@media (max-width: 700px) { .cta-banner .reviews-block { padding-top: 2.2rem; } }
