@@ -1762,7 +1762,7 @@ img, svg { max-width: 100%; }
 .dl-zion { grid-area: zion; }
 .dl-zeta { grid-area: zeta; }
 .dl-mascot { position: relative; min-width: 0; margin: 0; text-align: center; }
-.dl-bubble { position: relative; display: inline-block; max-width: 100%; margin-bottom: 14px; padding: 9px 14px; border: 1px solid var(--line); border-radius: 16px; background: #fff; box-shadow: 0 8px 22px rgba(32, 32, 39, .1); color: var(--ink); font-size: 13.5px; font-weight: 700; line-height: 1.3; letter-spacing: -.015em; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, color .2s ease; }
+.dl-bubble { position: relative; display: flex; align-items: center; justify-content: center; width: 100%; min-height: 54px; box-sizing: border-box; text-align: center; margin-bottom: 14px; padding: 9px 14px; border: 1px solid var(--line); border-radius: 16px; background: #fff; box-shadow: 0 8px 22px rgba(32, 32, 39, .1); color: var(--ink); font-size: 13.5px; font-weight: 700; line-height: 1.3; letter-spacing: -.015em; text-decoration: none; transition: transform .2s ease, box-shadow .2s ease, color .2s ease; }
 .dl-bubble::after { content: ""; position: absolute; left: 50%; bottom: -7px; width: 12px; height: 12px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #fff; transform: translateX(-50%) rotate(45deg); }
 .dl-bubble:hover, .dl-bubble:focus-visible { transform: translateY(-2px); color: var(--pink-deep); box-shadow: 0 12px 26px rgba(255, 21, 155, .18); }
 .dl-bubble:focus-visible { outline: 3px solid rgba(255, 26, 117, .35); outline-offset: 3px; }
@@ -1791,6 +1791,14 @@ img, svg { max-width: 100%; }
 .dl-anim.is-talking .dl-zion .dl-bubble { animation-delay: .3s; }
 .dl-anim.is-talking .dl-zeta .dl-bubble { animation-delay: 1.9s; }
 @keyframes dl-bubble-pop {
+  0%   { opacity: 0; transform: translateY(14px) scale(.4); }
+  55%  { opacity: 1; transform: translateY(-3px) scale(1.07); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Bubble pop for the random chat lines (a separate keyframes name so the animation restarts on every new line) */
+.dl-anim.is-talking .dl-mascot .dl-bubble.is-popping { animation: dl-bubble-pop-again .6s cubic-bezier(.34, 1.56, .64, 1) backwards; }
+@keyframes dl-bubble-pop-again {
   0%   { opacity: 0; transform: translateY(14px) scale(.4); }
   55%  { opacity: 1; transform: translateY(-3px) scale(1.07); }
   100% { opacity: 1; transform: translateY(0) scale(1); }

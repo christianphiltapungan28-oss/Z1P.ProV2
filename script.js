@@ -426,12 +426,60 @@ if (pricingToggle && pricingToggleButtons.length && pricingPanel && pricingConta
   if (document.fonts) document.fonts.ready.then(moveThumb);
 }
 
-// Download section: Zion's speech bubble pops up first, then Zeta's answers. It plays each time the section scrolls
-// into view. Without JavaScript (or with reduced motion) both bubbles are simply shown.
+// Download section: Zion's speech bubble pops up first, then Zeta's answers. After that they keep chatting with random,
+// encouraging exchanges (Zion speaks, Zeta replies) for as long as the section is on screen. Without JavaScript (or with
+// reduced motion) the two intro bubbles are simply shown and nothing rotates.
 const downloadWrap = document.querySelector('.download-wrap');
 if (downloadWrap && 'IntersectionObserver' in window && !reduceMotionPreference.matches) {
-  downloadWrap.classList.add('dl-anim');
-  new IntersectionObserver((entries) => {
-    entries.forEach((entry) => downloadWrap.classList.toggle('is-talking', entry.isIntersecting));
-  }, { threshold: 0.35 }).observe(downloadWrap);
+  const zionBubble = downloadWrap.querySelector('.dl-zion .dl-bubble');
+  const zetaBubble = downloadWrap.querySelector('.dl-zeta .dl-bubble');
+  if (zionBubble && zetaBubble) {
+    const introLines = [zionBubble.textContent, zetaBubble.textContent];
+    // Keep every line short (about 32 characters) so a bubble never grows past two lines.
+    const chatExchanges = [
+      ['Ready to explore Z1P?', 'Tap here to get started!'],
+      ['Think it through, step by step.', 'Then find your next move!'],
+      ['Your life companion, on Android.', 'Download it and say hi!'],
+      ['Got a big decision to make?', 'Z1P can help you work it out!'],
+      ["Curious what's inside?", 'Download it and take a look!'],
+      ["It's only a 98 MB download.", 'Quick to install. Try it today!'],
+      ['Meet your thinking partner.', 'Get the Android app now!']
+    ];
+    const INTRO_MS = 6500;      // intro pops (0.3s and 1.9s) plus a pause before the first chat
+    const REPLY_MS = 1900;      // Zeta answers this long after Zion
+    const GAP_MS = 5200;        // quiet time between exchanges
+    let chatTimers = [];
+    let lastExchange = -1;
+
+    const later = (ms, fn) => chatTimers.push(window.setTimeout(fn, ms));
+    const say = (bubble, text) => {
+      bubble.classList.remove('is-popping');
+      bubble.textContent = text;
+      void bubble.offsetWidth;            // restart the pop animation
+      bubble.classList.add('is-popping');
+    };
+    const nextExchange = () => {
+      let pick;
+      do { pick = Math.floor(Math.random() * chatExchanges.length); } while (pick === lastExchange && chatExchanges.length > 1);
+      lastExchange = pick;
+      say(zionBubble, chatExchanges[pick][0]);
+      later(REPLY_MS, () => say(zetaBubble, chatExchanges[pick][1]));
+      later(REPLY_MS + GAP_MS, nextExchange);
+    };
+    const startChat = () => { stopChat(); later(INTRO_MS, nextExchange); };
+    const stopChat = () => {
+      chatTimers.forEach((id) => window.clearTimeout(id));
+      chatTimers = [];
+      [zionBubble, zetaBubble].forEach((bubble, i) => { bubble.classList.remove('is-popping'); bubble.textContent = introLines[i]; });
+    };
+
+    downloadWrap.classList.add('dl-anim');
+    new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        downloadWrap.classList.toggle('is-talking', entry.isIntersecting);
+        if (entry.isIntersecting) startChat(); else stopChat();
+      });
+    }, { threshold: 0.35 }).observe(downloadWrap);
+    window.dlChatDebug = { startChat, stopChat };   // handy for testing in the console
+  }
 }
