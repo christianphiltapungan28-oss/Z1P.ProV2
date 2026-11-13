@@ -1784,3 +1784,14 @@ img, svg { max-width: 100%; }
 @media (max-width: 640px) { .download-wrap .download-card .download-button { width: fit-content; min-width: 230px; justify-content: center; margin: 22px auto 0; } }
 @media (max-width: 420px) { .dl-bubble { padding: 8px 11px; font-size: 12.5px; } }
 @media (prefers-reduced-motion: reduce) { .dl-art, .dl-shadow { animation: none; } .dl-bubble { transition: none; } }
+
+/* Download bubbles: Zion talks first, Zeta replies a moment later */
+.dl-anim .dl-bubble { opacity: 0; }
+.dl-anim.is-talking .dl-bubble { opacity: 1; transform-origin: 50% 100%; animation: dl-bubble-pop .6s cubic-bezier(.34, 1.56, .64, 1) backwards; }
+.dl-anim.is-talking .dl-zion .dl-bubble { animation-delay: .3s; }
+.dl-anim.is-talking .dl-zeta .dl-bubble { animation-delay: 1.9s; }
+@keyframes dl-bubble-pop {
+  0%   { opacity: 0; transform: translateY(14px) scale(.4); }
+  55%  { opacity: 1; transform: translateY(-3px) scale(1.07); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}

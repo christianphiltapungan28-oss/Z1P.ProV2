@@ -425,3 +425,13 @@ if (pricingToggle && pricingToggleButtons.length && pricingPanel && pricingConta
   window.addEventListener('resize', moveThumb);
   if (document.fonts) document.fonts.ready.then(moveThumb);
 }
+
+// Download section: Zion's speech bubble pops up first, then Zeta's answers. It plays each time the section scrolls
+// into view. Without JavaScript (or with reduced motion) both bubbles are simply shown.
+const downloadWrap = document.querySelector('.download-wrap');
+if (downloadWrap && 'IntersectionObserver' in window && !reduceMotionPreference.matches) {
+  downloadWrap.classList.add('dl-anim');
+  new IntersectionObserver((entries) => {
+    entries.forEach((entry) => downloadWrap.classList.toggle('is-talking', entry.isIntersecting));
+  }, { threshold: 0.35 }).observe(downloadWrap);
+}
