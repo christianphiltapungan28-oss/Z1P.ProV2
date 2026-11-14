@@ -213,7 +213,7 @@ if ('IntersectionObserver' in window && linkedSections.length) {
   linkedSections.forEach((section) => activeObserver.observe(section));
 }
 
-// Mascots: each one waves and shows its speech bubble when it appears. The Zion | Zeta
+// Mascots: each one waves and shows its speech bubble when it appears. The Zion | Zita
 // switch under them swaps who is on stage; the newcomer waves right after the swap.
 const mascotStage = document.querySelector('.mascot-stage');
 const mascots = [...document.querySelectorAll('.robot-mascot')];
@@ -426,8 +426,8 @@ if (pricingToggle && pricingToggleButtons.length && pricingPanel && pricingConta
   if (document.fonts) document.fonts.ready.then(moveThumb);
 }
 
-// Download section: Zion's speech bubble pops up first, then Zeta's answers. After that they keep chatting with random,
-// encouraging exchanges (Zion speaks, Zeta replies) for as long as the section is on screen. Without JavaScript (or with
+// Download section: Zion's speech bubble pops up first, then Zita's answers. After that they keep chatting with random,
+// encouraging exchanges (Zion speaks, Zita replies) for as long as the section is on screen. Without JavaScript (or with
 // reduced motion) the two intro bubbles are simply shown and nothing rotates.
 const downloadWrap = document.querySelector('.download-wrap');
 if (downloadWrap && 'IntersectionObserver' in window && !reduceMotionPreference.matches) {
@@ -446,7 +446,7 @@ if (downloadWrap && 'IntersectionObserver' in window && !reduceMotionPreference.
       ['Meet your thinking partner.', 'Get the Android app now!']
     ];
     const INTRO_MS = 6500;      // intro pops (0.3s and 1.9s) plus a pause before the first chat
-    const REPLY_MS = 1900;      // Zeta answers this long after Zion
+    const REPLY_MS = 1900;      // Zita answers this long after Zion
     const GAP_MS = 5200;        // quiet time between exchanges
     let chatTimers = [];
     let lastExchange = -1;
