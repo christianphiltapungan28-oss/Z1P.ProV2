@@ -1673,6 +1673,52 @@ img, svg { max-width: 100%; }
   --shadow-width: 35.73%;
 }
 
+/* Zion: inline SVG robot (240 x 260). Each moving part has its own CSS animation. */
+.zion-figure { animation: none; }
+.zion-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.robot-mascot[data-mascot="zion"] { --bubble-bottom: calc(100% - 4%); --tail-left: 50%; }
+
+.zion-svg .zr-float,
+.zion-svg .zr-arm,
+.zion-svg .zr-wave,
+.zion-svg .zr-head,
+.zion-svg .zr-eyes,
+.zion-svg .zr-shadow { transform-box: view-box; }
+
+.zr-float { animation: zr-float 3.2s ease-in-out infinite alternate; }
+.zr-shadow { transform-origin: 120px 252px; animation: zr-shadow 3.2s ease-in-out infinite alternate; }
+.zr-halo { transform-origin: 120px 128px; animation: zr-halo 2.6s ease-in-out infinite alternate; }
+.zr-arm-l { transform-origin: 70px 160px; animation: zr-sway-l 3.2s ease-in-out infinite alternate; }
+.zr-arm-r { transform-origin: 170px 160px; animation: zr-sway-r 3.2s ease-in-out infinite alternate; }
+.zr-wave { transform-origin: 170px 160px; }
+.robot-mascot.is-waving .zr-wave { animation: zr-wave 2.6s ease-in-out 1; }
+.zr-head { transform-origin: 120px 132px; animation: zr-tilt 4.2s ease-in-out 0.3s infinite alternate; }
+.zr-faceglow { animation: zr-glow 2.6s ease-in-out infinite alternate; }
+.zr-eyes { transform-origin: 120px 82px; animation: zr-blink 5.8s ease-in-out infinite; }
+
+@keyframes zr-float  { from { transform: translateY(6px); } to { transform: translateY(-8px); } }
+@keyframes zr-shadow { from { transform: scaleX(1); opacity: .32; } to { transform: scaleX(.72); opacity: .16; } }
+@keyframes zr-halo   { from { transform: scale(.9); opacity: .55; } to { transform: scale(1.06); opacity: .95; } }
+@keyframes zr-sway-l { from { transform: rotate(6deg); } to { transform: rotate(-5deg); } }
+@keyframes zr-sway-r { from { transform: rotate(-6deg); } to { transform: rotate(5deg); } }
+@keyframes zr-tilt   { from { transform: rotate(-4deg); } to { transform: rotate(4deg); } }
+@keyframes zr-glow   { from { opacity: .45; } to { opacity: .9; } }
+@keyframes zr-blink  {
+  0%, 44%, 48%, 54%, 58%, 100% { transform: scaleY(1); }
+  46%, 56% { transform: scaleY(.1); }
+}
+@keyframes zr-wave {
+  0%, 100% { transform: rotate(0deg); }
+  15%, 75% { transform: rotate(-130deg); }
+  30%, 60% { transform: rotate(-108deg); }
+  45%      { transform: rotate(-138deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zion-svg * { animation: none !important; }
+  .robot-mascot.is-waving .zr-wave { transform: rotate(-120deg); }
+}
+
 @keyframes robot-float {
   0%, 100% { translate: 0 0; }
   50%      { translate: 0 -14px; }

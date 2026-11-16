@@ -120,28 +120,86 @@
         <div class="mascot-stage">
           <div class="mascot-views">
             <div class="robot-mascot is-active" data-mascot="zion">
-              <!-- The floor shadow stays put while the figure (arm, body and bubble) floats above it. -->
-              <img class="robot-shadow" src="images/z1p-mascot-shadow.png" width="440" height="64" alt="" aria-hidden="true" loading="lazy" decoding="async">
-              <div class="robot-figure">
+              <!-- Zion is drawn as inline SVG (240 x 260) and animated with CSS: float, arm sway, wave, head tilt, blink, glow. -->
+              <div class="robot-figure zion-figure">
                 <p class="robot-bubble">Hi, I'm Zion!</p>
-                <!-- Body art with the left arm removed; the arm is its own image so it can wave from the shoulder. -->
-                <img
-                  class="robot-arm"
-                  src="images/z1p-mascot-arm.png"
-                  width="220"
-                  height="375"
-                  alt=""
-                  aria-hidden="true"
-                  loading="lazy"
-                  decoding="async">
-                <img
-                  class="robot-image"
-                  src="images/z1p-mascot-body.png"
-                  width="1167"
-                  height="1348"
-                  alt="Zion (Z109), the ZIP.RPO robot mascot"
-                  loading="lazy"
-                  decoding="async">
+                <svg class="zion-svg" viewBox="0 0 240 260" role="img" aria-label="Zion (Z109), the ZIP.RPO robot mascot" xmlns="http://www.w3.org/2000/svg">
+                  <defs>
+                    <radialGradient id="zr-halo" cx="50%" cy="50%" r="50%">
+                      <stop offset="0" stop-color="#FF2BA6" stop-opacity="0.55"/>
+                      <stop offset="0.55" stop-color="#8A3DFF" stop-opacity="0.22"/>
+                      <stop offset="1" stop-color="#5B6CFF" stop-opacity="0"/>
+                    </radialGradient>
+                    <linearGradient id="zr-armL" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0" stop-color="#E9EBF3"/><stop offset="1" stop-color="#B9BCCB"/>
+                    </linearGradient>
+                    <linearGradient id="zr-armR" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0" stop-color="#B9BCCB"/><stop offset="1" stop-color="#E9EBF3"/>
+                    </linearGradient>
+                    <linearGradient id="zr-body" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#F4F5FA"/><stop offset="0.6" stop-color="#DCDFEA"/><stop offset="1" stop-color="#B4B8C8"/>
+                    </linearGradient>
+                    <linearGradient id="zr-neck" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#B4B8C8"/><stop offset="1" stop-color="#D5D8E3"/>
+                    </linearGradient>
+                    <linearGradient id="zr-head" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0" stop-color="#F6F7FB"/><stop offset="1" stop-color="#C9CCD9"/>
+                    </linearGradient>
+                    <linearGradient id="zr-ear" x1="0" y1="0" x2="1" y2="0">
+                      <stop offset="0" stop-color="#D9DCE6"/><stop offset="1" stop-color="#B4B8C8"/>
+                    </linearGradient>
+                    <radialGradient id="zr-visor" cx="50%" cy="45%" r="65%">
+                      <stop offset="0" stop-color="#1E4058"/><stop offset="1" stop-color="#0E1A26"/>
+                    </radialGradient>
+                    <radialGradient id="zr-faceGlow" cx="50%" cy="50%" r="50%">
+                      <stop offset="0" stop-color="#4FE3F5" stop-opacity="0.55"/>
+                      <stop offset="1" stop-color="#4FE3F5" stop-opacity="0"/>
+                    </radialGradient>
+                  </defs>
+
+                  <circle class="zr-halo" cx="120" cy="128" r="118" fill="url(#zr-halo)"/>
+                  <ellipse class="zr-shadow" cx="120" cy="252" rx="46" ry="6" fill="#1B1B3A"/>
+
+                  <g class="zr-float">
+                    <!-- Arms sit behind the body and swing from the shoulders -->
+                    <g class="zr-arm zr-arm-l">
+                      <g transform="rotate(14 70 160)"><rect x="50" y="152" width="26" height="78" rx="13" fill="url(#zr-armL)"/></g>
+                    </g>
+                    <g class="zr-arm zr-arm-r">
+                      <g class="zr-wave">
+                        <g transform="rotate(-14 170 160)"><rect x="164" y="152" width="26" height="78" rx="13" fill="url(#zr-armR)"/></g>
+                      </g>
+                    </g>
+
+                    <!-- Body -->
+                    <rect x="104" y="124" width="32" height="22" rx="7" fill="url(#zr-neck)"/>
+                    <path d="M66 168 C66 147 92 140 120 140 C148 140 174 147 174 168 L171 202 C167 226 147 240 120 240 C93 240 73 226 69 202 Z" fill="url(#zr-body)"/>
+                    <path d="M70 194 L101 202 L101 212 L139 212 L139 202 L170 194" stroke="#A9ADBE" stroke-width="2" fill="none" stroke-linejoin="round"/>
+                    <path d="M82 158 C78 172 78 186 82 196" stroke="#FFFFFF" stroke-opacity="0.85" stroke-width="6" stroke-linecap="round" fill="none"/>
+                    <circle cx="120" cy="178" r="5" fill="#FF2BA6"/>
+                    <circle cx="120" cy="178" r="9" fill="#FF2BA6" opacity="0.18"/>
+
+                    <!-- Head, tilting from the neck -->
+                    <g class="zr-head">
+                      <rect x="96" y="16" width="48" height="22" rx="11" fill="url(#zr-ear)"/>
+                      <rect x="38" y="58" width="20" height="44" rx="10" fill="url(#zr-ear)"/>
+                      <rect x="182" y="58" width="20" height="44" rx="10" fill="url(#zr-ear)"/>
+                      <rect x="48" y="28" width="144" height="102" rx="44" fill="url(#zr-head)"/>
+                      <rect x="60" y="44" width="120" height="72" rx="32" fill="url(#zr-visor)"/>
+                      <path d="M70 40 C82 33 98 31 112 31" stroke="#FFFFFF" stroke-opacity="0.9" stroke-width="5" stroke-linecap="round" fill="none"/>
+                      <g class="zr-faceglow">
+                        <ellipse cx="96" cy="82" rx="22" ry="18" fill="url(#zr-faceGlow)"/>
+                        <ellipse cx="144" cy="82" rx="22" ry="18" fill="url(#zr-faceGlow)"/>
+                        <ellipse cx="120" cy="100" rx="14" ry="10" fill="url(#zr-faceGlow)"/>
+                      </g>
+                      <g class="zr-eyes">
+                        <path d="M85 86 a11 11 0 0 1 22 0 Z" fill="#5CE8F7"/>
+                        <path d="M133 86 a11 11 0 0 1 22 0 Z" fill="#5CE8F7"/>
+                      </g>
+                      <path d="M112 96 a8 8 0 0 0 16 0 Z" fill="#5CE8F7"/>
+                    </g>
+                  </g>
+                </svg>
               </div>
             </div>
 
