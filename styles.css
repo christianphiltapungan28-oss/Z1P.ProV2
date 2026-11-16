@@ -1636,7 +1636,7 @@ img, svg { max-width: 100%; }
    and a bubble placed to the left of her bow. */
 .robot-mascot[data-mascot="zeta"] {
   --bubble-left: 30%;
-  --bubble-bottom: calc(100% - 7%);
+  --bubble-bottom: calc(100% - 2%);
   --tail-left: 76%;
 }
 
