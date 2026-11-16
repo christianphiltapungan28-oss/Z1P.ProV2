@@ -1849,3 +1849,16 @@ img, svg { max-width: 100%; }
   55%  { opacity: 1; transform: translateY(-3px) scale(1.07); }
   100% { opacity: 1; transform: translateY(0) scale(1); }
 }
+
+/* Download section mascots: the same inline SVG robots, always waving every few seconds */
+.dl-art { animation: none; }
+.dl-stage .zion-svg { display: block; width: 100%; height: auto; overflow: visible; }
+.dl-mascot .zr-wave { animation: dl-wave 7s ease-in-out infinite; }
+.dl-zeta .zr-wave { animation-delay: -3s; }
+@keyframes dl-wave {
+  0%, 30%, 100% { transform: rotate(0deg); }
+  6%, 24% { transform: rotate(-130deg); }
+  10%, 20% { transform: rotate(-108deg); }
+  15% { transform: rotate(-138deg); }
+}
+@media (prefers-reduced-motion: reduce) { .dl-mascot .zr-wave { animation: none !important; } }
