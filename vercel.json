@@ -30,6 +30,15 @@
       ]
     }
   ],
+  "rewrites": [
+    { "source": "/privacy", "destination": "https://z1p-xi.vercel.app/privacy" },
+    { "source": "/terms", "destination": "https://z1p-xi.vercel.app/terms" },
+    { "source": "/about", "destination": "https://z1p-xi.vercel.app/about" },
+    { "source": "/cookies", "destination": "https://z1p-xi.vercel.app/cookies" },
+    { "source": "/refunds", "destination": "https://z1p-xi.vercel.app/refunds" },
+    { "source": "/_next/:path*", "destination": "https://z1p-xi.vercel.app/_next/:path*" },
+    { "source": "/icon.svg", "destination": "https://z1p-xi.vercel.app/icon.svg" }
+  ],
   "functions": {
     "api/early-access.js": {
       "maxDuration": 30
