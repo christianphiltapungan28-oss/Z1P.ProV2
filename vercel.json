@@ -33,6 +33,7 @@
   "rewrites": [
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/about-z1p", "destination": "/about-z1p.html" },
     { "source": "/about", "destination": "https://z1p-xi.vercel.app/about" },
     { "source": "/cookies", "destination": "https://z1p-xi.vercel.app/cookies" },
     { "source": "/refunds", "destination": "https://z1p-xi.vercel.app/refunds" },

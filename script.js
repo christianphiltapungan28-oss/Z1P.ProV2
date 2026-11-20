@@ -381,14 +381,19 @@ if (pricingToggle && pricingToggleButtons.length && pricingPanel && pricingConta
     });
     moveThumb();
     if (group === currentGroup) return;
+
+    // Which way the cards slide: toward Student is "next", back to Personal is "prev".
+    const order = pricingToggleButtons.map((button) => button.dataset.group);
+    pricingContainer.dataset.dir = order.indexOf(group) > order.indexOf(currentGroup) ? 'next' : 'prev';
     currentGroup = group;
 
     window.clearTimeout(swapTimer);
     pricingCleanup();
-    if (reduceMotionPreference.matches) {
-      applyGroup(group);
-      return;
-    }
+    // The pill stretches a little as it slides, then settles.
+    pricingToggle.classList.remove('is-sliding');
+    void pricingToggle.offsetWidth;
+    pricingToggle.classList.add('is-sliding');
+    window.setTimeout(() => pricingToggle.classList.remove('is-sliding'), 260);
     pricingContainer.classList.add('is-leaving');
     pricingPanel.classList.add('is-leaving');
     swapTimer = window.setTimeout(() => {
@@ -729,4 +734,48 @@ if (downloadWrap && 'IntersectionObserver' in window && !reduceMotionPreference.
     })
     .catch(() => { ratesState = 'failed'; })
     .then(() => { update(); if (!panel.hidden) renderList(Cur.searchCurrencies(search.value, locale)); });
+})();
+
+// FAQ: answers slide open and closed instead of jumping, and opening one
+// closes the others. Without JavaScript the <details> still open and close.
+(function () {
+  const list = document.querySelector('.faq-list');
+  if (!list || !Element.prototype.animate) return;
+  list.classList.add('faq-js');
+  const items = [...list.querySelectorAll('details')];
+  const EASE = 'cubic-bezier(.22, 1, .36, 1)';
+  const running = new Map();
+
+  const animateAnswer = (item, opening) => {
+    const answer = item.querySelector('.faq-answer');
+    if (!answer) { item.open = opening; return; }
+    running.get(item)?.cancel();
+    // A closed <details> can still report its answer's full height, so start from 0.
+    const startHeight = item.open ? answer.getBoundingClientRect().height : 0;
+    item.classList.toggle('is-open', opening);
+    if (opening) item.open = true;
+    const endHeight = opening ? answer.scrollHeight : 0;
+    const animation = answer.animate(
+      [
+        { height: startHeight + 'px', opacity: opening ? 0 : 1 },
+        { height: endHeight + 'px', opacity: opening ? 1 : 0 }
+      ],
+      { duration: opening ? 420 : 320, easing: EASE }
+    );
+    running.set(item, animation);
+    animation.onfinish = () => {
+      running.delete(item);
+      if (!opening) item.open = false;
+    };
+  };
+
+  items.forEach((item) => {
+    if (item.open) item.classList.add('is-open');
+    item.querySelector('summary').addEventListener('click', (event) => {
+      event.preventDefault();
+      const opening = !item.classList.contains('is-open');
+      if (opening) items.forEach((other) => { if (other !== item && other.classList.contains('is-open')) animateAnswer(other, false); });
+      animateAnswer(item, opening);
+    });
+  });
 })();
