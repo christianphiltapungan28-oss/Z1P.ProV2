@@ -1313,22 +1313,5 @@ body::after { display: none; }
 .pricing-toggle-btn::selection,
 .mascot-switch-btn::selection { background: transparent; }
 
-/* --------------------------------------------------------------------------
-   Above the nav bar: a band in the page's own sky colour (kept in step with
-   the background by script.js), fading out behind the bar. Content that
-   scrolls up softly disappears here instead of glitching in the gap.
-   -------------------------------------------------------------------------- */
-.site-header { top: 0; padding-top: 24px; }
-.site-header::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto;
-  z-index: -1;
-  height: 62px;
-  pointer-events: none;
-  background: linear-gradient(180deg, var(--band, #f7ecff) 0, var(--band, #f7ecff) 26px, transparent 100%);
-}
-@media (max-width: 900px) {
-  .site-header { top: 0; padding-top: 16px; }
-  .site-header::before { height: 50px; background: linear-gradient(180deg, var(--band, #f7ecff) 0, var(--band, #f7ecff) 18px, transparent 100%); }
-}
+/* No clouds in the background: just the soft sky gradient */
+body::before { content: none; display: none; }

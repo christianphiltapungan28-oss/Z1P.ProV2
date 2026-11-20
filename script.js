@@ -787,57 +787,35 @@ if (downloadWrap && 'IntersectionObserver' in window && !reduceMotionPreference.
   });
 })();
 
-// Phone clips play only while their phone is on screen: fewer videos drawing
-// at once (smoother, no flicker under the nav bar) and less battery use.
+// Phone clips play only while their phone is on screen and clear of the nav
+// bar. A clip playing under the frosted-glass bar could flicker in Brave /
+// Chrome; a paused clip is a still frame and doesn't. Also saves battery.
 (function () {
   const clips = [...document.querySelectorAll('video.phone-shot')];
-  if (!clips.length || !('IntersectionObserver' in window)) return;
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      const video = entry.target;
-      if (entry.isIntersecting) {
-        const playing = video.play();
-        if (playing && playing.catch) playing.catch(() => {});
-      } else {
-        video.pause();
-      }
-    });
-  }, { threshold: 0.15 });
-  clips.forEach((video) => observer.observe(video));
-})();
-
-// Keeps the band above the nav bar the same colour as the page background
-// at the top of the screen (the background is a gradient down the page).
-(function () {
-  const header = document.querySelector('.site-header');
-  if (!header) return;
-  const stops = [
-    [0, [255, 238, 247]],
-    [0.22, [247, 236, 255]],
-    [0.46, [238, 240, 255]],
-    [0.70, [246, 236, 255]],
-    [1, [255, 238, 247]],
-  ];
-  const colourAt = (t) => {
-    for (let i = 1; i < stops.length; i++) {
-      if (t <= stops[i][0]) {
-        const [t0, c0] = stops[i - 1];
-        const [t1, c1] = stops[i];
-        const k = (t - t0) / (t1 - t0 || 1);
-        return c0.map((v, j) => Math.round(v + (c1[j] - v) * k));
-      }
-    }
-    return stops[stops.length - 1][1];
-  };
+  if (!clips.length) return;
+  const bar = document.querySelector('.header-inner');
   let pending = false;
   const update = () => {
     pending = false;
-    const height = document.body.scrollHeight || 1;
-    const t = Math.min(1, Math.max(0, window.scrollY / height));
-    header.style.setProperty('--band', `rgb(${colourAt(t).join(' ')})`);
+    const barBottom = bar ? bar.getBoundingClientRect().bottom + 12 : 0;
+    const viewBottom = window.innerHeight;
+    clips.forEach((video) => {
+      const r = video.getBoundingClientRect();
+      const onScreen = r.bottom > 0 && r.top < viewBottom;
+      const underBar = r.top < barBottom && r.bottom > 0;
+      if (onScreen && !underBar) {
+        if (video.paused) {
+          const playing = video.play();
+          if (playing && playing.catch) playing.catch(() => {});
+        }
+      } else if (!video.paused) {
+        video.pause();
+      }
+    });
   };
   const schedule = () => { if (!pending) { pending = true; window.requestAnimationFrame(update); } };
   window.addEventListener('scroll', schedule, { passive: true });
   window.addEventListener('resize', schedule);
+  window.addEventListener('load', schedule);
   update();
 })();
