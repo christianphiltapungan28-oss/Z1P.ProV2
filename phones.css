@@ -691,15 +691,7 @@
    difference in screen shape trims the top and bottom evenly */
 video.phone-shot { object-position: center; pointer-events: none; }
 
-/* Flicker fix: a playing video inside a rounded, clipped box could vanish for
-   a frame where it met the glass nav bar (Chrome / Brave). Each phone screen
-   is now one stable layer that clips its video itself, and the phones no
-   longer ask for a separate GPU layer of their own. */
-.phone-screen {
-  isolation: isolate;
-  transform: translateZ(0);
-  -webkit-mask-image: -webkit-radial-gradient(white, black);
-  mask-image: radial-gradient(white, black);
-}
+/* The phones don't ask for a GPU layer of their own (it fed a flicker under
+   the glass nav bar; script.js also swaps clips for stills there). */
 .hero-phones .phone,
 .phone-stage .phone { will-change: auto; }

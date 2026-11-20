@@ -788,11 +788,21 @@ if (downloadWrap && 'IntersectionObserver' in window && !reduceMotionPreference.
 })();
 
 // Phone clips play only while their phone is on screen and clear of the nav
-// bar. A clip playing under the frosted-glass bar could flicker in Brave /
-// Chrome; a paused clip is a still frame and doesn't. Also saves battery.
+// bar. Under the frosted-glass bar even a paused video could flicker in
+// Brave / Chrome, so there the video is hidden and a still image of the same
+// screen (its poster, set as the screen's background) shows instead.
 (function () {
   const clips = [...document.querySelectorAll('video.phone-shot')];
   if (!clips.length) return;
+  clips.forEach((video) => {
+    const screen = video.parentElement;
+    const poster = video.getAttribute('poster');
+    if (screen && poster) {
+      screen.style.backgroundImage = `url("${poster}")`;
+      screen.style.backgroundSize = 'cover';
+      screen.style.backgroundPosition = 'center';
+    }
+  });
   const bar = document.querySelector('.header-inner');
   let pending = false;
   const update = () => {
@@ -800,9 +810,10 @@ if (downloadWrap && 'IntersectionObserver' in window && !reduceMotionPreference.
     const barBottom = bar ? bar.getBoundingClientRect().bottom + 12 : 0;
     const viewBottom = window.innerHeight;
     clips.forEach((video) => {
-      const r = video.getBoundingClientRect();
+      const r = video.parentElement.getBoundingClientRect();
       const onScreen = r.bottom > 0 && r.top < viewBottom;
       const underBar = r.top < barBottom && r.bottom > 0;
+      video.style.visibility = underBar ? 'hidden' : '';
       if (onScreen && !underBar) {
         if (video.paused) {
           const playing = video.play();
