@@ -1289,3 +1289,11 @@ body::after { display: none; }
   grid-template-columns: repeat(2, max-content);
   gap: 16px clamp(48px, 7vw, 96px);
 }
+
+/* "DOWNLOAD FOR" never breaks onto two lines; on phones every download badge
+   is full width like the one at the top, so it has room */
+.app-badge-text small { white-space: nowrap; }
+@media (max-width: 600px) {
+  .app-badge { display: flex; width: 100%; }
+  .app-badge .app-badge-arrow { margin-left: auto; }
+}
