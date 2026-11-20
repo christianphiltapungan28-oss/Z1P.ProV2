@@ -24,103 +24,6 @@
   <link rel="stylesheet" href="about.css">
 </head>
 <body>
-  <svg class="pm-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
-                    <radialGradient id="pm-halo" cx="50%" cy="50%" r="50%">
-                      <stop offset="0" stop-color="#FF2BA6" stop-opacity="0.55"/>
-                      <stop offset="0.55" stop-color="#8A3DFF" stop-opacity="0.22"/>
-                      <stop offset="1" stop-color="#5B6CFF" stop-opacity="0"/>
-                    </radialGradient>
-                    <linearGradient id="pm-armL" x1="0" y1="0" x2="1" y2="0">
-                      <stop offset="0" stop-color="#E9EBF3"/><stop offset="1" stop-color="#B9BCCB"/>
-                    </linearGradient>
-                    <linearGradient id="pm-armR" x1="0" y1="0" x2="1" y2="0">
-                      <stop offset="0" stop-color="#B9BCCB"/><stop offset="1" stop-color="#E9EBF3"/>
-                    </linearGradient>
-                    <linearGradient id="pm-body" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0" stop-color="#F4F5FA"/><stop offset="0.6" stop-color="#DCDFEA"/><stop offset="1" stop-color="#B4B8C8"/>
-                    </linearGradient>
-                    <linearGradient id="pm-neck" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0" stop-color="#B4B8C8"/><stop offset="1" stop-color="#D5D8E3"/>
-                    </linearGradient>
-                    <linearGradient id="pm-head" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0" stop-color="#F6F7FB"/><stop offset="1" stop-color="#C9CCD9"/>
-                    </linearGradient>
-                    <linearGradient id="pm-ear" x1="0" y1="0" x2="1" y2="0">
-                      <stop offset="0" stop-color="#D9DCE6"/><stop offset="1" stop-color="#B4B8C8"/>
-                    </linearGradient>
-                    <radialGradient id="pm-visor" cx="50%" cy="45%" r="65%">
-                      <stop offset="0" stop-color="#1E4058"/><stop offset="1" stop-color="#0E1A26"/>
-                    </radialGradient>
-                    <radialGradient id="pm-faceGlow" cx="50%" cy="50%" r="50%">
-                      <stop offset="0" stop-color="#4FE3F5" stop-opacity="0.55"/>
-                      <stop offset="1" stop-color="#4FE3F5" stop-opacity="0"/>
-                    </radialGradient>
-                  
-    <g id="pm-zion">
-                  
-
-                  <circle class="pm-halo" cx="120" cy="128" r="118" fill="url(#pm-halo)"/>
-                  <ellipse class="pm-shadow" cx="120" cy="252" rx="46" ry="6" fill="#1B1B3A"/>
-
-                  <g class="pm-float">
-                    <!-- Arms sit behind the body and swing from the shoulders -->
-                    <g class="pm-arm pm-arm-l">
-                      <g transform="rotate(14 70 160)"><rect x="50" y="152" width="26" height="78" rx="13" fill="url(#pm-armL)"/></g>
-                    </g>
-                    <g class="pm-arm pm-arm-r">
-                      <g class="pm-wave">
-                        <g transform="rotate(-14 170 160)"><rect x="164" y="152" width="26" height="78" rx="13" fill="url(#pm-armR)"/></g>
-                      </g>
-                    </g>
-
-                    <!-- Body -->
-                    <rect x="104" y="124" width="32" height="22" rx="7" fill="url(#pm-neck)"/>
-                    <path d="M66 168 C66 147 92 140 120 140 C148 140 174 147 174 168 L171 202 C167 226 147 240 120 240 C93 240 73 226 69 202 Z" fill="url(#pm-body)"/>
-                    <path d="M70 194 L101 202 L101 212 L139 212 L139 202 L170 194" stroke="#A9ADBE" stroke-width="2" fill="none" stroke-linejoin="round"/>
-                    <path d="M82 158 C78 172 78 186 82 196" stroke="#FFFFFF" stroke-opacity="0.85" stroke-width="6" stroke-linecap="round" fill="none"/>
-                    <circle cx="120" cy="178" r="5" fill="#FF2BA6"/>
-                    <circle cx="120" cy="178" r="9" fill="#FF2BA6" opacity="0.18"/>
-
-                    <!-- Head, tilting from the neck -->
-                    <g class="pm-head">
-                      <rect x="96" y="16" width="48" height="22" rx="11" fill="url(#pm-ear)"/>
-                      <rect x="38" y="58" width="20" height="44" rx="10" fill="url(#pm-ear)"/>
-                      <rect x="182" y="58" width="20" height="44" rx="10" fill="url(#pm-ear)"/>
-                      <rect x="48" y="28" width="144" height="102" rx="44" fill="url(#pm-head)"/>
-                      <rect x="60" y="44" width="120" height="72" rx="32" fill="url(#pm-visor)"/>
-                      <path d="M70 40 C82 33 98 31 112 31" stroke="#FFFFFF" stroke-opacity="0.9" stroke-width="5" stroke-linecap="round" fill="none"/>
-                      <g class="pm-faceglow">
-                        <ellipse cx="96" cy="82" rx="22" ry="18" fill="url(#pm-faceGlow)"/>
-                        <ellipse cx="144" cy="82" rx="22" ry="18" fill="url(#pm-faceGlow)"/>
-                        <ellipse cx="120" cy="100" rx="14" ry="10" fill="url(#pm-faceGlow)"/>
-                      </g>
-                      <g class="pm-eyes">
-                        <path d="M85 86 a11 11 0 0 1 22 0 Z" fill="#5CE8F7"/>
-                        <path d="M133 86 a11 11 0 0 1 22 0 Z" fill="#5CE8F7"/>
-                      </g>
-                      <path d="M112 96 a8 8 0 0 0 16 0 Z" fill="#5CE8F7"/>
-                    </g>
-                  </g>
-                </g>
-    <g id="pm-zion-head"><g class="pm-head">
-                      <rect x="96" y="16" width="48" height="22" rx="11" fill="url(#pm-ear)"/>
-                      <rect x="38" y="58" width="20" height="44" rx="10" fill="url(#pm-ear)"/>
-                      <rect x="182" y="58" width="20" height="44" rx="10" fill="url(#pm-ear)"/>
-                      <rect x="48" y="28" width="144" height="102" rx="44" fill="url(#pm-head)"/>
-                      <rect x="60" y="44" width="120" height="72" rx="32" fill="url(#pm-visor)"/>
-                      <path d="M70 40 C82 33 98 31 112 31" stroke="#FFFFFF" stroke-opacity="0.9" stroke-width="5" stroke-linecap="round" fill="none"/>
-                      <g class="pm-faceglow">
-                        <ellipse cx="96" cy="82" rx="22" ry="18" fill="url(#pm-faceGlow)"/>
-                        <ellipse cx="144" cy="82" rx="22" ry="18" fill="url(#pm-faceGlow)"/>
-                        <ellipse cx="120" cy="100" rx="14" ry="10" fill="url(#pm-faceGlow)"/>
-                      </g>
-                      <g class="pm-eyes">
-                        <path d="M85 86 a11 11 0 0 1 22 0 Z" fill="#5CE8F7"/>
-                        <path d="M133 86 a11 11 0 0 1 22 0 Z" fill="#5CE8F7"/>
-                      </g>
-                      <path d="M112 96 a8 8 0 0 0 16 0 Z" fill="#5CE8F7"/>
-                    </g></g>
-  </defs></svg>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="header-inner">
@@ -161,33 +64,7 @@
         <div class="ab-hero-phone">
 <figure class="phone-wrap ab-phone" role="img" aria-label="Z1P app home screen: Zion greets you and asks how your day is going">
       <div class="phone"><div class="phone-screen">
-      <div class="pm-app pm-home">
-        <div class="pm-status"><span>9:41</span><span class="pm-status-icons">
-          <svg viewBox="0 0 18 12"><path d="M1 11h2V8H1zM5 11h2V6H5zM9 11h2V4H9zM13 11h2V1h-2z" fill="currentColor"/></svg>
-          <svg viewBox="0 0 16 12"><path d="M8 11.5 1 4.2a10 10 0 0 1 14 0z" fill="currentColor"/></svg>
-          <svg viewBox="0 0 24 12"><rect x="1" y="1.5" width="19" height="9" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="3" y="3.5" width="12" height="5" rx="1" fill="currentColor"/><rect x="21" y="4.5" width="2" height="3" rx="1" fill="currentColor"/></svg>
-        </span></div>
-        <div class="pm-home-top"><span class="pm-bell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><span class="pm-bell-badge">2</span></span></div>
-        <div class="pm-home-greet">
-          <p class="pm-hello">Good morning, <b>Alex!</b></p>
-          <p class="pm-home-tag">A little care, every day. <span class="pm-chevrons"><i>&rsaquo;</i><i>&rsaquo;</i><i>&rsaquo;</i></span><span class="pm-heart"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.6 1.2 5.3 3.1 1.7-1.9 3.1-3.1 5.3-3.1 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z" fill="currentColor"/></svg></span></p>
-        </div>
-        <div class="pm-home-stage">
-          <div class="pm-home-robot">
-            <p class="pm-speech">How's your day going?</p>
-            <svg class="pm-robot-full" viewBox="0 0 240 260"><use href="#pm-zion"/></svg>
-          </div>
-          <p class="pm-home-cta">Speak with Zion</p>
-          <p class="pm-home-sub">Ask anything or describe a task</p>
-        </div>
-        <div class="pm-tabbar">
-          <span class="pm-tab is-active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></span>
-          <span class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg><span>Journeys</span></span>
-          <span class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Convos</span></span>
-          <span class="pm-tab"><span class="pm-tab-avatar">A</span><span>Profile</span></span>
-        </div>
-        <div class="pm-gesture"></div>
-      </div>
+      <img class="phone-shot" src="screens/home.webp" width="540" height="1170" alt="" fetchpriority="high">
       </div></div>
     </figure>
         </div>

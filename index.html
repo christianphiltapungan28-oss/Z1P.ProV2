@@ -32,103 +32,6 @@
   <link rel="stylesheet" href="phones.css">
 </head>
 <body>
-  <svg class="pm-defs" width="0" height="0" aria-hidden="true" focusable="false"><defs>
-                    <radialGradient id="pm-halo" cx="50%" cy="50%" r="50%">
-                      <stop offset="0" stop-color="#FF2BA6" stop-opacity="0.55"/>
-                      <stop offset="0.55" stop-color="#8A3DFF" stop-opacity="0.22"/>
-                      <stop offset="1" stop-color="#5B6CFF" stop-opacity="0"/>
-                    </radialGradient>
-                    <linearGradient id="pm-armL" x1="0" y1="0" x2="1" y2="0">
-                      <stop offset="0" stop-color="#E9EBF3"/><stop offset="1" stop-color="#B9BCCB"/>
-                    </linearGradient>
-                    <linearGradient id="pm-armR" x1="0" y1="0" x2="1" y2="0">
-                      <stop offset="0" stop-color="#B9BCCB"/><stop offset="1" stop-color="#E9EBF3"/>
-                    </linearGradient>
-                    <linearGradient id="pm-body" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0" stop-color="#F4F5FA"/><stop offset="0.6" stop-color="#DCDFEA"/><stop offset="1" stop-color="#B4B8C8"/>
-                    </linearGradient>
-                    <linearGradient id="pm-neck" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0" stop-color="#B4B8C8"/><stop offset="1" stop-color="#D5D8E3"/>
-                    </linearGradient>
-                    <linearGradient id="pm-head" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0" stop-color="#F6F7FB"/><stop offset="1" stop-color="#C9CCD9"/>
-                    </linearGradient>
-                    <linearGradient id="pm-ear" x1="0" y1="0" x2="1" y2="0">
-                      <stop offset="0" stop-color="#D9DCE6"/><stop offset="1" stop-color="#B4B8C8"/>
-                    </linearGradient>
-                    <radialGradient id="pm-visor" cx="50%" cy="45%" r="65%">
-                      <stop offset="0" stop-color="#1E4058"/><stop offset="1" stop-color="#0E1A26"/>
-                    </radialGradient>
-                    <radialGradient id="pm-faceGlow" cx="50%" cy="50%" r="50%">
-                      <stop offset="0" stop-color="#4FE3F5" stop-opacity="0.55"/>
-                      <stop offset="1" stop-color="#4FE3F5" stop-opacity="0"/>
-                    </radialGradient>
-                  
-    <g id="pm-zion">
-                  
-
-                  <circle class="pm-halo" cx="120" cy="128" r="118" fill="url(#pm-halo)"/>
-                  <ellipse class="pm-shadow" cx="120" cy="252" rx="46" ry="6" fill="#1B1B3A"/>
-
-                  <g class="pm-float">
-                    <!-- Arms sit behind the body and swing from the shoulders -->
-                    <g class="pm-arm pm-arm-l">
-                      <g transform="rotate(14 70 160)"><rect x="50" y="152" width="26" height="78" rx="13" fill="url(#pm-armL)"/></g>
-                    </g>
-                    <g class="pm-arm pm-arm-r">
-                      <g class="pm-wave">
-                        <g transform="rotate(-14 170 160)"><rect x="164" y="152" width="26" height="78" rx="13" fill="url(#pm-armR)"/></g>
-                      </g>
-                    </g>
-
-                    <!-- Body -->
-                    <rect x="104" y="124" width="32" height="22" rx="7" fill="url(#pm-neck)"/>
-                    <path d="M66 168 C66 147 92 140 120 140 C148 140 174 147 174 168 L171 202 C167 226 147 240 120 240 C93 240 73 226 69 202 Z" fill="url(#pm-body)"/>
-                    <path d="M70 194 L101 202 L101 212 L139 212 L139 202 L170 194" stroke="#A9ADBE" stroke-width="2" fill="none" stroke-linejoin="round"/>
-                    <path d="M82 158 C78 172 78 186 82 196" stroke="#FFFFFF" stroke-opacity="0.85" stroke-width="6" stroke-linecap="round" fill="none"/>
-                    <circle cx="120" cy="178" r="5" fill="#FF2BA6"/>
-                    <circle cx="120" cy="178" r="9" fill="#FF2BA6" opacity="0.18"/>
-
-                    <!-- Head, tilting from the neck -->
-                    <g class="pm-head">
-                      <rect x="96" y="16" width="48" height="22" rx="11" fill="url(#pm-ear)"/>
-                      <rect x="38" y="58" width="20" height="44" rx="10" fill="url(#pm-ear)"/>
-                      <rect x="182" y="58" width="20" height="44" rx="10" fill="url(#pm-ear)"/>
-                      <rect x="48" y="28" width="144" height="102" rx="44" fill="url(#pm-head)"/>
-                      <rect x="60" y="44" width="120" height="72" rx="32" fill="url(#pm-visor)"/>
-                      <path d="M70 40 C82 33 98 31 112 31" stroke="#FFFFFF" stroke-opacity="0.9" stroke-width="5" stroke-linecap="round" fill="none"/>
-                      <g class="pm-faceglow">
-                        <ellipse cx="96" cy="82" rx="22" ry="18" fill="url(#pm-faceGlow)"/>
-                        <ellipse cx="144" cy="82" rx="22" ry="18" fill="url(#pm-faceGlow)"/>
-                        <ellipse cx="120" cy="100" rx="14" ry="10" fill="url(#pm-faceGlow)"/>
-                      </g>
-                      <g class="pm-eyes">
-                        <path d="M85 86 a11 11 0 0 1 22 0 Z" fill="#5CE8F7"/>
-                        <path d="M133 86 a11 11 0 0 1 22 0 Z" fill="#5CE8F7"/>
-                      </g>
-                      <path d="M112 96 a8 8 0 0 0 16 0 Z" fill="#5CE8F7"/>
-                    </g>
-                  </g>
-                </g>
-    <g id="pm-zion-head"><g class="pm-head">
-                      <rect x="96" y="16" width="48" height="22" rx="11" fill="url(#pm-ear)"/>
-                      <rect x="38" y="58" width="20" height="44" rx="10" fill="url(#pm-ear)"/>
-                      <rect x="182" y="58" width="20" height="44" rx="10" fill="url(#pm-ear)"/>
-                      <rect x="48" y="28" width="144" height="102" rx="44" fill="url(#pm-head)"/>
-                      <rect x="60" y="44" width="120" height="72" rx="32" fill="url(#pm-visor)"/>
-                      <path d="M70 40 C82 33 98 31 112 31" stroke="#FFFFFF" stroke-opacity="0.9" stroke-width="5" stroke-linecap="round" fill="none"/>
-                      <g class="pm-faceglow">
-                        <ellipse cx="96" cy="82" rx="22" ry="18" fill="url(#pm-faceGlow)"/>
-                        <ellipse cx="144" cy="82" rx="22" ry="18" fill="url(#pm-faceGlow)"/>
-                        <ellipse cx="120" cy="100" rx="14" ry="10" fill="url(#pm-faceGlow)"/>
-                      </g>
-                      <g class="pm-eyes">
-                        <path d="M85 86 a11 11 0 0 1 22 0 Z" fill="#5CE8F7"/>
-                        <path d="M133 86 a11 11 0 0 1 22 0 Z" fill="#5CE8F7"/>
-                      </g>
-                      <path d="M112 96 a8 8 0 0 0 16 0 Z" fill="#5CE8F7"/>
-                    </g></g>
-  </defs></svg>
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="header-inner">
@@ -170,94 +73,17 @@
       <div class="hero-phones">
     <figure class="phone-wrap pw-left" role="img" aria-label="Z1P app chat screen: talking through a busy week with Zion">
       <div class="phone"><div class="phone-screen">
-      <div class="pm-app pm-chat">
-        <div class="pm-status"><span>9:41</span><span class="pm-status-icons">
-          <svg viewBox="0 0 18 12"><path d="M1 11h2V8H1zM5 11h2V6H5zM9 11h2V4H9zM13 11h2V1h-2z" fill="currentColor"/></svg>
-          <svg viewBox="0 0 16 12"><path d="M8 11.5 1 4.2a10 10 0 0 1 14 0z" fill="currentColor"/></svg>
-          <svg viewBox="0 0 24 12"><rect x="1" y="1.5" width="19" height="9" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="3" y="3.5" width="12" height="5" rx="1" fill="currentColor"/><rect x="21" y="4.5" width="2" height="3" rx="1" fill="currentColor"/></svg>
-        </span></div>
-        <div class="pm-chat-head">
-          <span class="pm-icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><polyline points="15 18 9 12 15 6"/></svg></span>
-          <span class="pm-chat-title"><b>Zion</b><span>Online</span></span>
-          <span class="pm-icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></span>
-        </div>
-        <div class="pm-chat-face"><svg class="pm-robot-face" viewBox="34 12 172 122"><use href="#pm-zion-head"/></svg></div>
-        <div class="pm-chat-list">
-          <p class="pm-msg pm-zip">Good morning, Alex! How are you feeling today?</p>
-          <p class="pm-msg pm-me">Honestly? A bit stressed.</p>
-          <p class="pm-msg pm-zip">Thanks for telling me. What's weighing on you most?</p>
-          <p class="pm-msg pm-me">I keep falling behind on my tasks and I don't know how to plan my week.</p>
-          <p class="pm-msg pm-zip">Let's slow down. What's one task that slipped this week, and why do you think it did?</p>
-          <div class="pm-choices"><span>A work deadline</span><span>I kept putting it off</span></div>
-          <p class="pm-msg pm-zip pm-typing"><i></i><i></i><i></i></p>
-        </div>
-        <div class="pm-chat-drawer"><span class="pm-journey-btn"><span class="pm-journey-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></span>Journey</span></div>
-        <div class="pm-chat-input"><span class="pm-input">Type or tap the mic</span><span class="pm-round"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></span></div>
-        <div class="pm-gesture"></div>
-      </div>
+      <img class="phone-shot" src="screens/chat.webp" width="540" height="1170" alt="" fetchpriority="high">
       </div></div>
     </figure>
     <figure class="phone-wrap pw-center" role="img" aria-label="Z1P app home screen: Zion greets you and asks how your day is going">
       <div class="phone"><div class="phone-screen">
-      <div class="pm-app pm-home">
-        <div class="pm-status"><span>9:41</span><span class="pm-status-icons">
-          <svg viewBox="0 0 18 12"><path d="M1 11h2V8H1zM5 11h2V6H5zM9 11h2V4H9zM13 11h2V1h-2z" fill="currentColor"/></svg>
-          <svg viewBox="0 0 16 12"><path d="M8 11.5 1 4.2a10 10 0 0 1 14 0z" fill="currentColor"/></svg>
-          <svg viewBox="0 0 24 12"><rect x="1" y="1.5" width="19" height="9" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="3" y="3.5" width="12" height="5" rx="1" fill="currentColor"/><rect x="21" y="4.5" width="2" height="3" rx="1" fill="currentColor"/></svg>
-        </span></div>
-        <div class="pm-home-top"><span class="pm-bell"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><span class="pm-bell-badge">2</span></span></div>
-        <div class="pm-home-greet">
-          <p class="pm-hello">Good morning, <b>Alex!</b></p>
-          <p class="pm-home-tag">A little care, every day. <span class="pm-chevrons"><i>&rsaquo;</i><i>&rsaquo;</i><i>&rsaquo;</i></span><span class="pm-heart"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.6 1.2 5.3 3.1 1.7-1.9 3.1-3.1 5.3-3.1 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z" fill="currentColor"/></svg></span></p>
-        </div>
-        <div class="pm-home-stage">
-          <div class="pm-home-robot">
-            <p class="pm-speech">How's your day going?</p>
-            <svg class="pm-robot-full" viewBox="0 0 240 260"><use href="#pm-zion"/></svg>
-          </div>
-          <p class="pm-home-cta">Speak with Zion</p>
-          <p class="pm-home-sub">Ask anything or describe a task</p>
-        </div>
-        <div class="pm-tabbar">
-          <span class="pm-tab is-active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></span>
-          <span class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg><span>Journeys</span></span>
-          <span class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Convos</span></span>
-          <span class="pm-tab"><span class="pm-tab-avatar">A</span><span>Profile</span></span>
-        </div>
-        <div class="pm-gesture"></div>
-      </div>
+      <img class="phone-shot" src="screens/home.webp" width="540" height="1170" alt="" loading="lazy">
       </div></div>
     </figure>
     <figure class="phone-wrap pw-right" role="img" aria-label="Z1P app Profile screen: your Wheel of Life and Life Harmony score">
       <div class="phone"><div class="phone-screen">
-      <div class="pm-app pm-profile">
-        <div class="pm-status"><span>9:41</span><span class="pm-status-icons">
-          <svg viewBox="0 0 18 12"><path d="M1 11h2V8H1zM5 11h2V6H5zM9 11h2V4H9zM13 11h2V1h-2z" fill="currentColor"/></svg>
-          <svg viewBox="0 0 16 12"><path d="M8 11.5 1 4.2a10 10 0 0 1 14 0z" fill="currentColor"/></svg>
-          <svg viewBox="0 0 24 12"><rect x="1" y="1.5" width="19" height="9" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="3" y="3.5" width="12" height="5" rx="1" fill="currentColor"/><rect x="21" y="4.5" width="2" height="3" rx="1" fill="currentColor"/></svg>
-        </span></div>
-        <div class="pm-pf-top"><span class="pm-gear"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span></div>
-        <div class="pm-pf-body">
-          <div class="pm-pf-header">
-            <span class="pm-avatar-ring"><span class="pm-avatar">A</span></span>
-            <span class="pm-pf-name"><b>Alex Cruz</b><span class="pm-pf-badge">PREMIUM</span></span>
-          </div>
-          <div class="pm-pf-banner"><span class="pm-pf-spark"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z" fill="currentColor"/></svg></span><p>Insights based on your conversations &amp; journeys with your AI life companion. Scores update dynamically as your chat logs evolve.</p></div>
-          <div class="pm-pf-card">
-            <div class="pm-pf-card-head"><b>Your Wheel of Life</b><span class="pm-pf-details">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg></span></div>
-            <p class="pm-pf-card-body">Your strongest area right now is <b>Growth</b>. Keep chatting with Zion to grow the rest.</p>
-            <svg class="pm-wheel" viewBox="0 0 200 200"><path d="M101.0 70.0L103.3 6.1A94 94 0 0 1 171.4 38.9L122.8 80.5A30 30 0 0 0 101.0 70.0Z" fill="#FF5FAE" opacity=".22"/><path class="pm-wheel-fill" d="M101.0 70.0L102.8 20.1A79.92 79.92 0 0 1 160.7 48.0L122.8 80.5A30 30 0 0 0 101.0 70.0Z" fill="#FF5FAE"/><path d="M124.1 82.1L175.5 44.0A94 94 0 0 1 192.3 117.7L129.5 105.6A30 30 0 0 0 124.1 82.1Z" fill="#45BFD6" opacity=".22"/><path class="pm-wheel-fill" d="M124.1 82.1L152.4 61.2A65.2 65.2 0 0 1 164.0 112.3L129.5 105.6A30 30 0 0 0 124.1 82.1Z" fill="#45BFD6"/><path d="M129.0 107.7L190.9 124.1A94 94 0 0 1 143.7 183.2L114.0 126.6A30 30 0 0 0 129.0 107.7Z" fill="#7AA5F0" opacity=".22"/><path class="pm-wheel-fill" d="M129.0 107.7L172.3 119.2A74.8 74.8 0 0 1 134.8 166.2L114.0 126.6A30 30 0 0 0 129.0 107.7Z" fill="#7AA5F0"/><path d="M112.1 127.5L137.8 186.1A94 94 0 0 1 62.2 186.1L87.9 127.5A30 30 0 0 0 112.1 127.5Z" fill="#F2668B" opacity=".22"/><path class="pm-wheel-fill" d="M112.1 127.5L128.0 163.8A69.68 69.68 0 0 1 72.0 163.8L87.9 127.5A30 30 0 0 0 112.1 127.5Z" fill="#F2668B"/><path d="M86.0 126.6L56.3 183.2A94 94 0 0 1 9.1 124.1L71.0 107.7A30 30 0 0 0 86.0 126.6Z" fill="#FFB547" opacity=".22"/><path class="pm-wheel-fill" d="M86.0 126.6L59.3 177.5A87.6 87.6 0 0 1 15.3 122.5L71.0 107.7A30 30 0 0 0 86.0 126.6Z" fill="#FFB547"/><path d="M70.5 105.6L7.7 117.7A94 94 0 0 1 24.5 44.0L75.9 82.1A30 30 0 0 0 70.5 105.6Z" fill="#9C8CF2" opacity=".22"/><path class="pm-wheel-fill" d="M70.5 105.6L39.1 111.7A62 62 0 0 1 50.2 63.1L75.9 82.1A30 30 0 0 0 70.5 105.6Z" fill="#9C8CF2"/><path d="M77.2 80.5L28.6 38.9A94 94 0 0 1 96.7 6.1L99.0 70.0A30 30 0 0 0 77.2 80.5Z" fill="#43C595" opacity=".22"/><path class="pm-wheel-fill" d="M77.2 80.5L55.3 61.8A58.8 58.8 0 0 1 97.9 41.2L99.0 70.0A30 30 0 0 0 77.2 80.5Z" fill="#43C595"/><circle cx="100" cy="100" r="26" fill="#3B2F5C"/><text x="100" y="105" text-anchor="middle" class="pm-wheel-hub">74%</text></svg>
-            <p class="pm-pf-tagline">BALANCE &bull; GROW &bull; THRIVE</p>
-          </div>
-        </div>
-        <div class="pm-tabbar">
-          <span class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></span>
-          <span class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg><span>Journeys</span></span>
-          <span class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Convos</span></span>
-          <span class="pm-tab is-active"><span class="pm-tab-avatar">A</span><span>Profile</span></span>
-        </div>
-        <div class="pm-gesture"></div>
-      </div>
+      <img class="phone-shot" src="screens/profile.webp" width="540" height="1170" alt="" loading="lazy">
       </div></div>
     </figure>
       </div>
@@ -464,31 +290,7 @@
             <div class="phone-stage">
     <figure class="phone-wrap " role="img" aria-label="Z1P app chat screen: talking through a busy week with Zion">
       <div class="phone"><div class="phone-screen">
-      <div class="pm-app pm-chat">
-        <div class="pm-status"><span>9:41</span><span class="pm-status-icons">
-          <svg viewBox="0 0 18 12"><path d="M1 11h2V8H1zM5 11h2V6H5zM9 11h2V4H9zM13 11h2V1h-2z" fill="currentColor"/></svg>
-          <svg viewBox="0 0 16 12"><path d="M8 11.5 1 4.2a10 10 0 0 1 14 0z" fill="currentColor"/></svg>
-          <svg viewBox="0 0 24 12"><rect x="1" y="1.5" width="19" height="9" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="3" y="3.5" width="12" height="5" rx="1" fill="currentColor"/><rect x="21" y="4.5" width="2" height="3" rx="1" fill="currentColor"/></svg>
-        </span></div>
-        <div class="pm-chat-head">
-          <span class="pm-icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><polyline points="15 18 9 12 15 6"/></svg></span>
-          <span class="pm-chat-title"><b>Zion</b><span>Online</span></span>
-          <span class="pm-icon-btn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg></span>
-        </div>
-        <div class="pm-chat-face"><svg class="pm-robot-face" viewBox="34 12 172 122"><use href="#pm-zion-head"/></svg></div>
-        <div class="pm-chat-list">
-          <p class="pm-msg pm-zip">Good morning, Alex! How are you feeling today?</p>
-          <p class="pm-msg pm-me">Honestly? A bit stressed.</p>
-          <p class="pm-msg pm-zip">Thanks for telling me. What's weighing on you most?</p>
-          <p class="pm-msg pm-me">I keep falling behind on my tasks and I don't know how to plan my week.</p>
-          <p class="pm-msg pm-zip">Let's slow down. What's one task that slipped this week, and why do you think it did?</p>
-          <div class="pm-choices"><span>A work deadline</span><span>I kept putting it off</span></div>
-          <p class="pm-msg pm-zip pm-typing"><i></i><i></i><i></i></p>
-        </div>
-        <div class="pm-chat-drawer"><span class="pm-journey-btn"><span class="pm-journey-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></span>Journey</span></div>
-        <div class="pm-chat-input"><span class="pm-input">Type or tap the mic</span><span class="pm-round"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></span></div>
-        <div class="pm-gesture"></div>
-      </div>
+      <img class="phone-shot" src="screens/chat.webp" width="540" height="1170" alt="" loading="lazy">
       </div></div>
     </figure>
             </div>
@@ -504,42 +306,7 @@
             <div class="phone-stage">
     <figure class="phone-wrap " role="img" aria-label="Z1P app Journeys screen: a stack of goals with progress bars">
       <div class="phone"><div class="phone-screen">
-      <div class="pm-app pm-journeys">
-        <div class="pm-status"><span>9:41</span><span class="pm-status-icons">
-          <svg viewBox="0 0 18 12"><path d="M1 11h2V8H1zM5 11h2V6H5zM9 11h2V4H9zM13 11h2V1h-2z" fill="currentColor"/></svg>
-          <svg viewBox="0 0 16 12"><path d="M8 11.5 1 4.2a10 10 0 0 1 14 0z" fill="currentColor"/></svg>
-          <svg viewBox="0 0 24 12"><rect x="1" y="1.5" width="19" height="9" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="3" y="3.5" width="12" height="5" rx="1" fill="currentColor"/><rect x="21" y="4.5" width="2" height="3" rx="1" fill="currentColor"/></svg>
-        </span></div>
-        <div class="pm-jr-head">
-          <p class="pm-jr-title">Your Journeys</p>
-          <p class="pm-jr-sub">Goals and Plans you've built with Zion</p>
-          <div class="pm-jr-search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><span>Search Your Journeys</span></div>
-        </div>
-        <div class="pm-jr-count"><span>3 Journeys Available</span><span class="pm-jr-hint">Swipe Up <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg></span></div>
-        <div class="pm-jr-stack">
-          <div class="pm-jr-card pm-back2"></div>
-          <div class="pm-jr-card pm-back1"></div>
-          <div class="pm-jr-card pm-front">
-            <span class="pm-jr-flag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg></span>
-            <p class="pm-jr-name">Plan a better week</p>
-            <p class="pm-jr-desc">Three small steps to get your week back on track.</p>
-            <p class="pm-jr-progress">Progress 33%</p>
-            <div class="pm-jr-track"><i></i></div>
-          </div>
-        </div>
-        <div class="pm-jr-start">
-          <svg class="pm-robot-mini" viewBox="34 12 172 122"><use href="#pm-zion-head"/></svg>
-          <p class="pm-jr-start-title">Start Your Journey</p>
-          <p class="pm-jr-start-desc">Tell Zion what you're trying to accomplish and we'll help turn it into a Journey.</p>
-        </div>
-        <div class="pm-tabbar">
-          <span class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></span>
-          <span class="pm-tab is-active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg><span>Journeys</span></span>
-          <span class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Convos</span></span>
-          <span class="pm-tab"><span class="pm-tab-avatar">A</span><span>Profile</span></span>
-        </div>
-        <div class="pm-gesture"></div>
-      </div>
+      <img class="phone-shot" src="screens/journeys.webp" width="540" height="1170" alt="" loading="lazy">
       </div></div>
     </figure>
             </div>
@@ -555,34 +322,7 @@
             <div class="phone-stage">
     <figure class="phone-wrap " role="img" aria-label="Z1P app Profile screen: your Wheel of Life and Life Harmony score">
       <div class="phone"><div class="phone-screen">
-      <div class="pm-app pm-profile">
-        <div class="pm-status"><span>9:41</span><span class="pm-status-icons">
-          <svg viewBox="0 0 18 12"><path d="M1 11h2V8H1zM5 11h2V6H5zM9 11h2V4H9zM13 11h2V1h-2z" fill="currentColor"/></svg>
-          <svg viewBox="0 0 16 12"><path d="M8 11.5 1 4.2a10 10 0 0 1 14 0z" fill="currentColor"/></svg>
-          <svg viewBox="0 0 24 12"><rect x="1" y="1.5" width="19" height="9" rx="2.4" fill="none" stroke="currentColor" stroke-width="1.2"/><rect x="3" y="3.5" width="12" height="5" rx="1" fill="currentColor"/><rect x="21" y="4.5" width="2" height="3" rx="1" fill="currentColor"/></svg>
-        </span></div>
-        <div class="pm-pf-top"><span class="pm-gear"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span></div>
-        <div class="pm-pf-body">
-          <div class="pm-pf-header">
-            <span class="pm-avatar-ring"><span class="pm-avatar">A</span></span>
-            <span class="pm-pf-name"><b>Alex Cruz</b><span class="pm-pf-badge">PREMIUM</span></span>
-          </div>
-          <div class="pm-pf-banner"><span class="pm-pf-spark"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 7.6L22 12l-7.6 2.4L12 22l-2.4-7.6L2 12l7.6-2.4z" fill="currentColor"/></svg></span><p>Insights based on your conversations &amp; journeys with your AI life companion. Scores update dynamically as your chat logs evolve.</p></div>
-          <div class="pm-pf-card">
-            <div class="pm-pf-card-head"><b>Your Wheel of Life</b><span class="pm-pf-details">View Details <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.6"><polyline points="9 18 15 12 9 6"/></svg></span></div>
-            <p class="pm-pf-card-body">Your strongest area right now is <b>Growth</b>. Keep chatting with Zion to grow the rest.</p>
-            <svg class="pm-wheel" viewBox="0 0 200 200"><path d="M101.0 70.0L103.3 6.1A94 94 0 0 1 171.4 38.9L122.8 80.5A30 30 0 0 0 101.0 70.0Z" fill="#FF5FAE" opacity=".22"/><path class="pm-wheel-fill" d="M101.0 70.0L102.8 20.1A79.92 79.92 0 0 1 160.7 48.0L122.8 80.5A30 30 0 0 0 101.0 70.0Z" fill="#FF5FAE"/><path d="M124.1 82.1L175.5 44.0A94 94 0 0 1 192.3 117.7L129.5 105.6A30 30 0 0 0 124.1 82.1Z" fill="#45BFD6" opacity=".22"/><path class="pm-wheel-fill" d="M124.1 82.1L152.4 61.2A65.2 65.2 0 0 1 164.0 112.3L129.5 105.6A30 30 0 0 0 124.1 82.1Z" fill="#45BFD6"/><path d="M129.0 107.7L190.9 124.1A94 94 0 0 1 143.7 183.2L114.0 126.6A30 30 0 0 0 129.0 107.7Z" fill="#7AA5F0" opacity=".22"/><path class="pm-wheel-fill" d="M129.0 107.7L172.3 119.2A74.8 74.8 0 0 1 134.8 166.2L114.0 126.6A30 30 0 0 0 129.0 107.7Z" fill="#7AA5F0"/><path d="M112.1 127.5L137.8 186.1A94 94 0 0 1 62.2 186.1L87.9 127.5A30 30 0 0 0 112.1 127.5Z" fill="#F2668B" opacity=".22"/><path class="pm-wheel-fill" d="M112.1 127.5L128.0 163.8A69.68 69.68 0 0 1 72.0 163.8L87.9 127.5A30 30 0 0 0 112.1 127.5Z" fill="#F2668B"/><path d="M86.0 126.6L56.3 183.2A94 94 0 0 1 9.1 124.1L71.0 107.7A30 30 0 0 0 86.0 126.6Z" fill="#FFB547" opacity=".22"/><path class="pm-wheel-fill" d="M86.0 126.6L59.3 177.5A87.6 87.6 0 0 1 15.3 122.5L71.0 107.7A30 30 0 0 0 86.0 126.6Z" fill="#FFB547"/><path d="M70.5 105.6L7.7 117.7A94 94 0 0 1 24.5 44.0L75.9 82.1A30 30 0 0 0 70.5 105.6Z" fill="#9C8CF2" opacity=".22"/><path class="pm-wheel-fill" d="M70.5 105.6L39.1 111.7A62 62 0 0 1 50.2 63.1L75.9 82.1A30 30 0 0 0 70.5 105.6Z" fill="#9C8CF2"/><path d="M77.2 80.5L28.6 38.9A94 94 0 0 1 96.7 6.1L99.0 70.0A30 30 0 0 0 77.2 80.5Z" fill="#43C595" opacity=".22"/><path class="pm-wheel-fill" d="M77.2 80.5L55.3 61.8A58.8 58.8 0 0 1 97.9 41.2L99.0 70.0A30 30 0 0 0 77.2 80.5Z" fill="#43C595"/><circle cx="100" cy="100" r="26" fill="#3B2F5C"/><text x="100" y="105" text-anchor="middle" class="pm-wheel-hub">74%</text></svg>
-            <p class="pm-pf-tagline">BALANCE &bull; GROW &bull; THRIVE</p>
-          </div>
-        </div>
-        <div class="pm-tabbar">
-          <span class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></span>
-          <span class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg><span>Journeys</span></span>
-          <span class="pm-tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span>Convos</span></span>
-          <span class="pm-tab is-active"><span class="pm-tab-avatar">A</span><span>Profile</span></span>
-        </div>
-        <div class="pm-gesture"></div>
-      </div>
+      <img class="phone-shot" src="screens/profile.webp" width="540" height="1170" alt="" loading="lazy">
       </div></div>
     </figure>
             </div>
