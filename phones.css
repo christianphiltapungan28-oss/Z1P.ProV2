@@ -687,3 +687,6 @@
   object-position: top center;
   background: #fff;
 }
+/* Recorded app clips play inside the phones; centred so the slight
+   difference in screen shape trims the top and bottom evenly */
+video.phone-shot { object-position: center; pointer-events: none; }
