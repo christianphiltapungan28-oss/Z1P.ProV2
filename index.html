@@ -633,8 +633,24 @@
       <div class="pricing-container">
         <header class="pricing-header">
           <h2 class="pricing-title" id="pricing-title">Plans and pricing</h2>
-          <p class="pricing-subtitle">All prices are in Philippine pesos (₱). Plans don't renew automatically: when a paid period ends, the account returns to Free.</p>
+          <p class="pricing-subtitle" id="pricing-subtitle">All prices are in Philippine pesos (₱). Plans don't renew automatically: when a paid period ends, the account returns to Free.</p>
         </header>
+
+        <div class="currency-picker" id="currency-picker" hidden>
+          <span class="currency-picker-label" id="currency-picker-label">Currency</span>
+          <button class="currency-picker-btn" id="currency-picker-btn" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="currency-panel" aria-labelledby="currency-picker-label currency-picker-btn">
+            <span class="currency-picker-code" id="currency-picker-code">PHP</span>
+            <span class="currency-picker-name" id="currency-picker-name">Philippine Peso</span>
+            <svg class="currency-picker-chevron" width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M3 5.5l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="currency-panel" id="currency-panel" hidden>
+            <input class="currency-search" id="currency-search" type="search" role="combobox" aria-expanded="true" aria-controls="currency-list" aria-autocomplete="list" aria-label="Search currencies by name, code or country" placeholder="Search currency, code or country" autocomplete="off" spellcheck="false">
+            <ul class="currency-list" id="currency-list" role="listbox" aria-label="Currencies"></ul>
+            <p class="currency-empty" id="currency-empty" hidden>No currencies match your search.</p>
+            <button class="currency-auto" id="currency-auto" type="button" hidden>Use automatic detection</button>
+          </div>
+          <p class="sr-only" id="currency-status" role="status" aria-live="polite"></p>
+        </div>
 
         <div class="pricing-toggle" role="tablist" aria-label="Plan type">
           <button class="pricing-toggle-btn is-active" type="button" role="tab" id="plans-tab-personal" aria-selected="true" aria-controls="pricing-cards" data-group="personal">Personal</button>
@@ -793,6 +809,8 @@
       </div>
     </div>
   </footer>
+  <script src="pricing-config.js"></script>
+  <script src="currency.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

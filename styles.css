@@ -1862,3 +1862,149 @@ img, svg { max-width: 100%; }
   15% { transform: rotate(-138deg); }
 }
 @media (prefers-reduced-motion: reduce) { .dl-mascot .zr-wave { animation: none !important; } }
+
+/* Currency selector and converted prices */
+.currency-picker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: -20px auto 26px;
+}
+
+.currency-picker[hidden] { display: none; }
+
+.currency-picker-label { color: var(--muted); font-size: .85rem; font-weight: 600; }
+
+.currency-picker-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  min-height: 42px;
+  padding: 0 14px;
+  border: 1px solid #e9e7ed;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: .88rem;
+  cursor: pointer;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.currency-picker-btn:hover,
+.currency-picker-btn[aria-expanded="true"] { border-color: #f3a6ce; box-shadow: 0 6px 18px rgba(255, 21, 155, .1); }
+.currency-picker-btn:focus-visible { outline: 3px solid rgba(255, 21, 155, .25); outline-offset: 2px; }
+.currency-picker-code { font-weight: 800; color: var(--pink-deep); }
+.currency-picker-name { overflow: hidden; color: #555560; text-overflow: ellipsis; white-space: nowrap; }
+.currency-picker-chevron { flex: none; color: var(--muted); }
+
+.currency-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 50%;
+  z-index: 20;
+  width: min(380px, calc(100vw - 36px));
+  padding: 10px;
+  border: 1px solid #e9e7ed;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 18px 44px rgba(32, 32, 39, .16);
+  transform: translateX(-50%);
+}
+
+.currency-panel[hidden] { display: none; }
+
+.currency-search {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 42px;
+  padding: 0 12px;
+  border: 1px solid #e9e7ed;
+  border-radius: 10px;
+  background: #fff;
+  color: var(--ink);
+  font: inherit;
+  font-size: 16px; /* 16px stops iOS zooming in on focus */
+}
+
+.currency-search:focus { border-color: var(--pink); outline: 3px solid rgba(255, 21, 155, .15); }
+
+.currency-list {
+  max-height: min(320px, 50vh);
+  margin: 8px 0 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+  overscroll-behavior: contain;
+}
+
+.currency-option {
+  display: grid;
+  grid-template-columns: 3.1rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 10px;
+  border-radius: 10px;
+  color: var(--ink);
+  font-size: .88rem;
+  cursor: pointer;
+}
+
+.currency-option.is-active { background: var(--pink-soft); }
+.currency-option[aria-selected="true"] .currency-option-code { color: var(--pink-deep); }
+.currency-option-code { font-weight: 800; }
+.currency-option-name { min-width: 0; color: #555560; }
+.currency-option-name small { display: block; color: var(--muted); font-size: .72rem; }
+.currency-option-symbol { color: var(--muted); font-size: .82rem; }
+
+.currency-empty { margin: 14px 8px 8px; color: var(--muted); font-size: .85rem; text-align: center; }
+.currency-empty[hidden] { display: none; }
+
+.currency-auto {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 9px;
+  border: 0;
+  border-top: 1px solid #f0eef3;
+  background: none;
+  color: var(--pink-deep);
+  font: inherit;
+  font-size: .82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.currency-auto[hidden] { display: none; }
+
+.pricing-card .plan-price .price-approx {
+  display: block;
+  margin: 0 0 8px;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+
+.pricing-card .plan-price.price-long { font-size: clamp(1.7rem, 3.2vw, 2.2rem); }
+.pricing-card .plan-price.price-xlong { font-size: clamp(1.35rem, 2.6vw, 1.75rem); }
+.pricing-card .plan-price.has-note { margin-bottom: 8px; overflow-wrap: anywhere; }
+
+.pricing-card .plan-price-note {
+  margin: 0 0 20px;
+  color: var(--muted);
+  font-size: .75rem;
+  line-height: 1.4;
+}
+
+.pricing-card .plan-price-note + .plan-note { margin-top: 0; }
+
+@media (max-width: 560px) {
+  .currency-picker { margin-top: -28px; }
+  .currency-picker-label { flex-basis: 100%; text-align: center; }
+  .currency-picker-btn { max-width: calc(100vw - 36px); }
+}

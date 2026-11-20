@@ -483,3 +483,250 @@ if (downloadWrap && 'IntersectionObserver' in window && !reduceMotionPreference.
     window.dlChatDebug = { startChat, stopChat };   // handy for testing in the console
   }
 }
+
+// Pricing currency: show plan prices in the visitor's currency. PHP stays the base and the
+// currency charged at checkout; other currencies are approximate conversions from
+// pricing-config.js using rates served (and cached) by /api/rates.
+(function () {
+  const Pricing = window.Z1PPricing;
+  const Cur = window.Z1PCurrency;
+  const picker = document.querySelector('#currency-picker');
+  if (!Pricing || !Cur || !picker) return;
+
+  const button = document.querySelector('#currency-picker-btn');
+  const buttonCode = document.querySelector('#currency-picker-code');
+  const buttonName = document.querySelector('#currency-picker-name');
+  const panel = document.querySelector('#currency-panel');
+  const search = document.querySelector('#currency-search');
+  const list = document.querySelector('#currency-list');
+  const emptyMessage = document.querySelector('#currency-empty');
+  const autoButton = document.querySelector('#currency-auto');
+  const status = document.querySelector('#currency-status');
+  const subtitle = document.querySelector('#pricing-subtitle');
+  const cards = [...document.querySelectorAll('.pricing-card[data-plan]')];
+
+  const STORAGE_KEY = 'z1p-currency';
+  const locales = navigator.languages && navigator.languages.length ? [...navigator.languages] : [navigator.language || 'en'];
+  const locale = locales[0];
+
+  const readSaved = () => { try { return localStorage.getItem(STORAGE_KEY); } catch { return null; } };
+  const writeSaved = (code) => { try { localStorage.setItem(STORAGE_KEY, code); } catch { /* storage blocked: the choice lasts this visit only */ } };
+  const clearSaved = () => { try { localStorage.removeItem(STORAGE_KEY); } catch { /* ignore */ } };
+
+  let saved = Cur.isActiveCurrency(readSaved()) ? readSaved() : null;
+  let serverCountry = null;
+  let rates = null;                // normalized rates once loaded
+  let ratesState = 'loading';      // 'loading' | 'ready' | 'failed'
+  let currency = Cur.detectCurrency({ saved, country: null, locales }).currency;
+
+  // Remember the original markup so choosing PHP restores the page exactly as written.
+  const originals = cards.map((card) => {
+    const price = card.querySelector('.plan-price');
+    const note = card.querySelector('.plan-note');
+    const period = price && price.querySelector('span');
+    return { card, price, note, priceHTML: price ? price.innerHTML : '', noteText: note ? note.textContent : '', period: period ? period.textContent : '' };
+  });
+  const originalSubtitle = subtitle ? subtitle.textContent : '';
+  const SUBTITLE_TAIL = " Plans don't renew automatically: when a paid period ends, the account returns to Free.";
+
+  const nameCache = new Map();
+  const symbolCache = new Map();
+  const nameOf = (code) => { if (!nameCache.has(code)) nameCache.set(code, Cur.currencyName(code, locale)); return nameCache.get(code); };
+  const symbolOf = (code) => { if (!symbolCache.has(code)) symbolCache.set(code, Cur.currencySymbol(code, locale)); return symbolCache.get(code); };
+  const hasRate = (code) => code === Cur.BASE_CURRENCY || Boolean(rates && rates[code]);
+
+  function makeEl(tag, className, text) {
+    const el = document.createElement(tag);
+    if (className) el.className = className;
+    if (text !== undefined) el.textContent = text;
+    return el;
+  }
+
+  function renderPrices() {
+    const isBase = currency === Cur.BASE_CURRENCY;
+    let longest = 0;
+    for (const item of originals) {
+      const { card, price, note } = item;
+      if (!price) continue;
+      card.querySelectorAll('.plan-price-note').forEach((el) => el.remove());
+      price.className = 'plan-price';
+      price.removeAttribute('aria-busy');
+      if (note) note.textContent = item.noteText;
+
+      const plan = Pricing.PLANS[card.dataset.plan];
+      if (isBase || !plan) { price.innerHTML = item.priceHTML; continue; }
+
+      const loading = ratesState === 'loading' && plan.php > 0;
+      const view = Cur.priceView(plan.php, currency, ratesState === 'ready' ? rates : null, locale);
+      const showOriginal = loading || view.state === 'unavailable';
+      const amountText = showOriginal ? view.original : view.text;
+
+      price.textContent = '';
+      let label = null;
+      if (!showOriginal && view.state === 'approx') label = 'Approx.';
+      else if (view.state === 'free') label = 'Always free';
+      if (label) price.append(makeEl('span', 'price-approx', label));
+      price.append(document.createTextNode(amountText));
+      if (item.period) price.append(makeEl('span', '', item.period));
+      if (loading) price.setAttribute('aria-busy', 'true');
+
+      let noteLine = '';
+      if (loading) noteLine = 'Loading local price…';
+      else if (view.state === 'unavailable') noteLine = 'Conversion unavailable · Charged in ' + Pricing.CHARGE_CURRENCY;
+      else if (view.state === 'approx') noteLine = view.original + item.period + ' · Charged in ' + Pricing.CHARGE_CURRENCY;
+      else if (view.state === 'free') noteLine = 'No charge in any currency';
+      if (noteLine) {
+        price.classList.add('has-note');
+        price.after(makeEl('p', 'plan-price-note', noteLine));
+      }
+
+      longest = Math.max(longest, amountText.length);
+
+      if (note && card.dataset.plan === 'semester' && view.state === 'approx') {
+        const saving = Cur.convertFromPHP(Pricing.SEMESTER_SAVING_PHP, currency, rates);
+        if (saving !== null) note.textContent = 'Paid per ' + Pricing.SEMESTER_MONTHS + '-month semester (save ' + Cur.formatMoney(saving, currency, locale) + ')';
+      }
+    }
+
+    // One font size for every card, set by the longest amount, so the cards stay aligned.
+    const sizeClass = longest > 14 ? 'price-xlong' : longest > 10 ? 'price-long' : '';
+    if (sizeClass) originals.forEach((item) => item.price && item.price.classList.add(sizeClass));
+
+    if (subtitle) {
+      if (isBase || ratesState === 'loading') subtitle.textContent = originalSubtitle;
+      else if (hasRate(currency)) {
+        subtitle.textContent = 'Prices are approximate conversions into ' + nameOf(currency) + ' (' + currency + ') from Philippine pesos (₱), shown for reference. You are charged in ' + Pricing.CHARGE_CURRENCY + '.' + SUBTITLE_TAIL;
+      } else {
+        subtitle.textContent = 'Conversion to ' + nameOf(currency) + ' (' + currency + ') is unavailable, so prices are shown in Philippine pesos (₱).' + SUBTITLE_TAIL;
+      }
+    }
+  }
+
+  function renderButton() {
+    buttonCode.textContent = currency;
+    buttonName.textContent = nameOf(currency);
+    autoButton.hidden = !saved;
+  }
+
+  // ----- selector -----
+  let shown = [];
+  let activeIndex = 0;
+  const optionId = (code) => 'currency-option-' + code;
+
+  function renderList(codes) {
+    shown = codes;
+    list.textContent = '';
+    const fragment = document.createDocumentFragment();
+    for (const code of codes) {
+      const option = makeEl('li', 'currency-option');
+      option.id = optionId(code);
+      option.setAttribute('role', 'option');
+      option.dataset.code = code;
+      option.setAttribute('aria-selected', String(code === currency));
+      option.append(makeEl('span', 'currency-option-code', code));
+      const text = makeEl('span', 'currency-option-name', nameOf(code));
+      if (ratesState === 'ready' && !hasRate(code)) text.append(makeEl('small', '', 'Conversion unavailable'));
+      option.append(text);
+      option.append(makeEl('span', 'currency-option-symbol', symbolOf(code)));
+      fragment.append(option);
+    }
+    list.append(fragment);
+    emptyMessage.hidden = codes.length > 0;
+    list.hidden = codes.length === 0;
+    setActive(Math.max(0, codes.indexOf(currency)), true);
+  }
+
+  function setActive(index, scroll) {
+    if (!shown.length) { search.removeAttribute('aria-activedescendant'); return; }
+    activeIndex = Math.min(Math.max(index, 0), shown.length - 1);
+    list.querySelectorAll('.is-active').forEach((el) => el.classList.remove('is-active'));
+    const el = document.getElementById(optionId(shown[activeIndex]));
+    if (!el) return;
+    el.classList.add('is-active');
+    search.setAttribute('aria-activedescendant', el.id);
+    if (scroll) el.scrollIntoView({ block: 'nearest' });
+  }
+
+  function openPanel() {
+    panel.hidden = false;
+    button.setAttribute('aria-expanded', 'true');
+    search.value = '';
+    renderList(Cur.searchCurrencies('', locale));
+    search.focus();
+  }
+
+  function closePanel(returnFocus) {
+    if (panel.hidden) return;
+    panel.hidden = true;
+    button.setAttribute('aria-expanded', 'false');
+    if (returnFocus) button.focus();
+  }
+
+  function update() {
+    renderButton();
+    renderPrices();
+  }
+
+  function choose(code) {
+    if (!Cur.isActiveCurrency(code)) return;
+    saved = code;
+    writeSaved(code);
+    currency = code;
+    update();
+    status.textContent = 'Prices now shown in ' + nameOf(code) + ' (' + code + ').';
+    closePanel(true);
+  }
+
+  button.addEventListener('click', () => (panel.hidden ? openPanel() : closePanel(false)));
+  search.addEventListener('input', () => renderList(Cur.searchCurrencies(search.value, locale)));
+  search.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowDown') { event.preventDefault(); setActive(activeIndex + 1, true); }
+    else if (event.key === 'ArrowUp') { event.preventDefault(); setActive(activeIndex - 1, true); }
+    else if (event.key === 'Enter') { event.preventDefault(); if (shown[activeIndex]) choose(shown[activeIndex]); }
+    else if (event.key === 'Escape') { event.preventDefault(); closePanel(true); }
+  });
+  list.addEventListener('click', (event) => {
+    const option = event.target.closest('.currency-option');
+    if (option) choose(option.dataset.code);
+  });
+  list.addEventListener('mousemove', (event) => {
+    const option = event.target.closest('.currency-option');
+    if (option) { const index = shown.indexOf(option.dataset.code); if (index !== activeIndex) setActive(index, false); }
+  });
+  autoButton.addEventListener('click', () => {
+    saved = null;
+    clearSaved();
+    currency = Cur.detectCurrency({ country: serverCountry, locales }).currency;
+    update();
+    status.textContent = 'Using automatic detection: ' + nameOf(currency) + ' (' + currency + ').';
+    closePanel(true);
+  });
+  picker.addEventListener('focusout', (event) => {
+    if (event.relatedTarget && !picker.contains(event.relatedTarget)) closePanel(false);
+  });
+  document.addEventListener('click', (event) => { if (!picker.contains(event.target)) closePanel(false); });
+
+  picker.hidden = false;
+  update();
+
+  // ----- data from the server -----
+  const getJSON = (url) => fetch(url, { headers: { Accept: 'application/json' } }).then((r) => (r.ok ? r.json() : Promise.reject(new Error(String(r.status)))));
+
+  getJSON('/api/country')
+    .then((data) => {
+      serverCountry = data && data.country ? data.country : null;
+      if (!saved) {
+        const next = Cur.detectCurrency({ country: serverCountry, locales }).currency;
+        if (next !== currency) { currency = next; update(); }
+      }
+    })
+    .catch(() => { /* no country header (local preview): the browser locale is used */ });
+
+  getJSON('/api/rates')
+    .then((data) => {
+      rates = Cur.normalizeRates(data && data.rates);
+      ratesState = Object.keys(rates).length > 1 ? 'ready' : 'failed';
+    })
+    .catch(() => { ratesState = 'failed'; })
+    .then(() => { update(); if (!panel.hidden) renderList(Cur.searchCurrencies(search.value, locale)); });
+})();
