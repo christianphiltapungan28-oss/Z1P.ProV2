@@ -1229,3 +1229,63 @@ body::after { display: none; }
 @media (min-width: 900px) {
   .footer-meta { align-items: center; }
 }
+
+/* --------------------------------------------------------------------------
+   Zion / Zita: no box around them, and the switch slides like the plan one
+   -------------------------------------------------------------------------- */
+.mascot-stage {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+.mascot-switch {
+  overflow: hidden;
+  isolation: isolate;
+  background: rgb(255 255 255 / .7);
+  border: 2px solid var(--panel-edge);
+  box-shadow: var(--control-depth);
+}
+.mascot-switch-btn { font-weight: 800; transition: color .35s ease, transform .15s ease; }
+.mascot-switch-btn.is-active,
+.mascot-switch.has-thumb .mascot-switch-btn.is-active { color: #fff; }
+.mascot-switch:not(.has-thumb) .mascot-switch-btn.is-active { background: var(--pink); }
+.mascot-switch.has-thumb::before {
+  background: linear-gradient(180deg, #ff38ab, var(--pink));
+  box-shadow: 0 2px 8px rgb(255 21 155 / .3);
+  transition:
+    transform .5s cubic-bezier(.22, 1, .36, 1),
+    width .5s cubic-bezier(.22, 1, .36, 1),
+    scale .25s ease;
+}
+.mascot-switch.is-sliding::before { scale: 1.04 .9; }
+@media (prefers-reduced-motion: reduce) {
+  .mascot-switch.has-thumb::before {
+    transition:
+      transform .5s cubic-bezier(.22, 1, .36, 1),
+      width .5s cubic-bezier(.22, 1, .36, 1),
+      scale .25s ease !important;
+  }
+  .mascot-switch-btn { transition: color .35s ease, transform .15s ease !important; }
+}
+
+/* --------------------------------------------------------------------------
+   Footer links in a 2 x 2 grid of groups, each list starting at the top
+   -------------------------------------------------------------------------- */
+.footer-links {
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  align-items: start;
+  gap: clamp(22px, 3vw, 30px) clamp(48px, 7vw, 96px);
+}
+.footer-links ul { align-content: start; }
+
+/* Footer: no slash pattern behind it, and the links two per line with the
+   same space between every row */
+.footer-panel::before { content: none; display: none; }
+.footer-links { display: block; }
+.footer-links ul {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 16px clamp(48px, 7vw, 96px);
+}

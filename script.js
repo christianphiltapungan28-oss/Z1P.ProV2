@@ -251,6 +251,13 @@ if (mascotStage && mascots.length && 'IntersectionObserver' in window) {
       button.setAttribute('aria-pressed', String(active));
     });
     placeMascotThumb();
+    // The pill stretches a little as it slides, like the plan switch.
+    if (mascotSwitch) {
+      mascotSwitch.classList.remove('is-sliding');
+      void mascotSwitch.offsetWidth;
+      mascotSwitch.classList.add('is-sliding');
+      window.setTimeout(() => mascotSwitch.classList.remove('is-sliding'), 260);
+    }
     previous.classList.remove('is-active', 'is-waving');
     previous.setAttribute('aria-hidden', 'true');
     next.classList.add('is-active');
