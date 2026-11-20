@@ -1297,3 +1297,18 @@ body::after { display: none; }
   .app-badge { display: flex; width: 100%; }
   .app-badge .app-badge-arrow { margin-left: auto; }
 }
+
+/* Switches (Personal / Student, Zion / Zita): clicking fast never selects the
+   label text, which drew a blue highlight box over the sliding pill */
+.pricing-toggle,
+.pricing-toggle-btn,
+.mascot-switch,
+.mascot-switch-btn,
+.faq-list summary,
+.app-badge {
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.pricing-toggle-btn::selection,
+.mascot-switch-btn::selection { background: transparent; }

@@ -656,3 +656,22 @@
   .hero-phones .phone,
   .phone-stage .phone { transition: transform .75s cubic-bezier(.22, 1, .36, 1) !important; }
 }
+
+/* Phones: the three hero phones fit inside the screen with nothing cut off.
+   A little smaller, with the side phones tucked further behind the middle one. */
+@media (max-width: 600px) {
+  .hero-phones { --phone-w: min(38vw, 220px); padding: 8px 0 28px; }
+  .hero-phones .pw-left,
+  .hero-phones .pw-right { --phone-w: calc(min(38vw, 220px) * .8); }
+  .hero-phones .pw-left { margin-right: -22%; }
+  .hero-phones .pw-right { margin-left: -22%; }
+  .hero-phones .pw-left .phone { transform: translateY(8%) rotate(-7deg); }
+  .hero-phones .pw-right .phone { transform: translateY(8%) rotate(7deg); }
+}
+@media (max-width: 600px) {
+  .hero-phones { --phone-w: min(46vw, 230px); }
+  .hero-phones .pw-left,
+  .hero-phones .pw-right { --phone-w: calc(min(46vw, 230px) * .82); }
+  .hero-phones .pw-left { margin-right: -21%; }
+  .hero-phones .pw-right { margin-left: -21%; }
+}
