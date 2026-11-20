@@ -690,3 +690,16 @@
 /* Recorded app clips play inside the phones; centred so the slight
    difference in screen shape trims the top and bottom evenly */
 video.phone-shot { object-position: center; pointer-events: none; }
+
+/* Flicker fix: a playing video inside a rounded, clipped box could vanish for
+   a frame where it met the glass nav bar (Chrome / Brave). Each phone screen
+   is now one stable layer that clips its video itself, and the phones no
+   longer ask for a separate GPU layer of their own. */
+.phone-screen {
+  isolation: isolate;
+  transform: translateZ(0);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  mask-image: radial-gradient(white, black);
+}
+.hero-phones .phone,
+.phone-stage .phone { will-change: auto; }

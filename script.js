@@ -786,3 +786,22 @@ if (downloadWrap && 'IntersectionObserver' in window && !reduceMotionPreference.
     });
   });
 })();
+
+// Phone clips play only while their phone is on screen: fewer videos drawing
+// at once (smoother, no flicker under the nav bar) and less battery use.
+(function () {
+  const clips = [...document.querySelectorAll('video.phone-shot')];
+  if (!clips.length || !('IntersectionObserver' in window)) return;
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const video = entry.target;
+      if (entry.isIntersecting) {
+        const playing = video.play();
+        if (playing && playing.catch) playing.catch(() => {});
+      } else {
+        video.pause();
+      }
+    });
+  }, { threshold: 0.15 });
+  clips.forEach((video) => observer.observe(video));
+})();
