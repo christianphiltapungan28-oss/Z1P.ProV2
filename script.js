@@ -805,3 +805,39 @@ if (downloadWrap && 'IntersectionObserver' in window && !reduceMotionPreference.
   }, { threshold: 0.15 });
   clips.forEach((video) => observer.observe(video));
 })();
+
+// Keeps the band above the nav bar the same colour as the page background
+// at the top of the screen (the background is a gradient down the page).
+(function () {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+  const stops = [
+    [0, [255, 238, 247]],
+    [0.22, [247, 236, 255]],
+    [0.46, [238, 240, 255]],
+    [0.70, [246, 236, 255]],
+    [1, [255, 238, 247]],
+  ];
+  const colourAt = (t) => {
+    for (let i = 1; i < stops.length; i++) {
+      if (t <= stops[i][0]) {
+        const [t0, c0] = stops[i - 1];
+        const [t1, c1] = stops[i];
+        const k = (t - t0) / (t1 - t0 || 1);
+        return c0.map((v, j) => Math.round(v + (c1[j] - v) * k));
+      }
+    }
+    return stops[stops.length - 1][1];
+  };
+  let pending = false;
+  const update = () => {
+    pending = false;
+    const height = document.body.scrollHeight || 1;
+    const t = Math.min(1, Math.max(0, window.scrollY / height));
+    header.style.setProperty('--band', `rgb(${colourAt(t).join(' ')})`);
+  };
+  const schedule = () => { if (!pending) { pending = true; window.requestAnimationFrame(update); } };
+  window.addEventListener('scroll', schedule, { passive: true });
+  window.addEventListener('resize', schedule);
+  update();
+})();
