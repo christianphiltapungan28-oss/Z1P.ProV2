@@ -1325,7 +1325,8 @@ body::before { content: none; display: none; }
   -webkit-backdrop-filter: none;
   backdrop-filter: none;
   background: transparent;
-  overflow: hidden;
+  /* No overflow clipping here: the phone menu drops down outside the bar.
+     The glass layer below is already rounded to the pill on its own. */
 }
 /* Gentler glass: a light blur (no colour boost) on a layer inside the bar,
    clipped to the pill. Lighter for the browser than the old blur, which
