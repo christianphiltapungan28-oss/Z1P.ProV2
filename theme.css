@@ -1315,3 +1315,29 @@ body::after { display: none; }
 
 /* No clouds in the background: just the soft sky gradient */
 body::before { content: none; display: none; }
+
+/* --------------------------------------------------------------------------
+   Nav bar: a frosted fill instead of a live blur. The blur also redraws a
+   margin around the bar, and in Brave / Chrome whatever scrolled through
+   that margin (the phones) could flicker. Same pill, edge and shadow.
+   -------------------------------------------------------------------------- */
+.header-inner {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background: linear-gradient(180deg, rgb(255 255 255 / .95), rgb(255 246 251 / .92));
+}
+/* Phone menu: solid white so the page behind never shows through */
+@media (max-width: 900px) {
+  .primary-nav,
+  .primary-nav.is-open {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+    background: #fff;
+    opacity: 1;
+    border-color: var(--panel-edge);
+    box-shadow:
+      0 3px 0 rgb(120 40 90 / .06),
+      0 24px 48px -16px rgb(80 20 60 / .35);
+  }
+  .primary-nav a { color: #3a2b4a; }
+}
